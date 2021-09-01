@@ -1,15 +1,17 @@
 import React from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
-import Header from '../Header/Header';
-import About from '../About/About';
-import Footer from '../Footer/Footer';
+import Main from '../Main/Main';
+import SavedNews from '../SavedNews/SavedNews';
 
 function App() {
     return (
         <div className='app'>
-            < Header/>
-            < About/>
-            < Footer/>
+            <Switch>
+                <Route exact path='/'><Main /></Route>
+                <Route path='/saved-news'><SavedNews /></Route>
+                <Route><Redirect to='/'></Redirect></Route>
+            </Switch>
         </div>
     )
 }
