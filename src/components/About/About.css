@@ -1,0 +1,47 @@
+.about {
+    display: flex;
+    flex-direction: row;
+
+    min-height: 624px;
+    max-width: 1440px;
+    
+    margin: 0 auto 0 auto;
+    
+    background-color: white;
+}
+
+.about__author-image {
+    margin: auto 0 auto 104px;
+
+    width: 464px;
+    height: 464px;
+    max-width: 464px;
+    max-height: 464px;
+
+    object-fit: cover;
+
+    border-radius: 100%;
+}
+
+.about__text-container {
+    margin: 131px 0 0 56px;
+    max-width: 600px;
+}
+
+.about__title {
+    margin: 0 0 24px 0;
+    font-size: 40px;
+    font-family: 'Roboto Slab', Verdana, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 46px;  
+}
+
+.about__text {
+    margin: 0;
+    font-size: 18px;
+    font-family: 'Roboto', Verdana, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 24px;
+}
