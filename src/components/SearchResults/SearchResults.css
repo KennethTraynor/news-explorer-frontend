@@ -1,0 +1,68 @@
+.search-results {
+    display: block;
+    
+    max-width: 1440px;
+    width: 100%;
+    
+    margin: 0 auto 0 auto;
+    
+    background-color: #F5F6F7;
+}
+
+.search-results__container {
+    margin: 80px 104px 80px 104px;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-results__title {
+    margin: 0 0 64px 0;
+    padding: 0;
+
+    font-family: 'Roboto Slab', Verdana, sans-serif;    
+    color: #1A1B22;
+    
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    
+    line-height: 46px;
+}
+
+.search-results__more-button {
+    margin: 64px auto 0 auto;
+    max-width: 288px;
+    min-height: 64px;
+    width: 100%;
+    
+    background-color: white;
+    
+    color: #1A1B22;
+
+    font-family: 'Roboto', Verdana, sans-serif;    
+    font-weight: 500;
+    font-style:  normal;
+    font-size: 18px;
+    text-align: center;
+
+    line-height: 24px;
+    
+    border: none;
+    border-radius: 80px;
+}
+
+.temp-card-layout {
+    margin: 0 auto 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-flow: row;
+    row-gap: 16px;
+    column-gap: 16px;
+}
+
+.temp-card {
+    height: 576px;
+    width: 400px;
+    background-color: white;
+    border-radius: 16px;
+}

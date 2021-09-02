@@ -35,7 +35,8 @@
     font-family: 'Roboto Slab', Verdana, sans-serif;
     font-style: normal;
     font-weight: normal;
-    line-height: 46px;  
+    line-height: 46px;
+    color: #1A1B22;
 }
 
 .about__text {
@@ -45,4 +46,5 @@
     font-style: normal;
     font-weight: normal;
     line-height: 24px;
+    color: #1A1B22;
 }
