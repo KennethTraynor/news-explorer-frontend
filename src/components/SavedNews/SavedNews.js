@@ -1,15 +1,15 @@
 import './SavedNews.css';
 
 import Header from '../Header/Header';
-import About from '../About/About';
+import SearchResults from '../SearchResults/SearchResults';
 import Footer from '../Footer/Footer';
 
 function SavedNews() {
     return (
         <div className='main'>
-            <Header/>
-            <About/>
-            <Footer/>
+            <Header />
+            <SearchResults />
+            <Footer />
         </div>
     )
 }
