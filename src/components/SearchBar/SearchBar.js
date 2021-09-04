@@ -5,7 +5,7 @@ function SearchBar() {
         <div className='search-bar'>
             <form className='search-bar__form'>
                 <input className='search-bar__search-text' placeholder='Enter topic'></input>
-                <button className='search-bar__button' type='submt' >Search</button>
+                <button className='search-bar__button' type='submit' >Search</button>
             </form>
         </div>
     )
