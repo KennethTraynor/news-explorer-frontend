@@ -6,7 +6,7 @@ function SearchResults() {
         <section className='search-results'>
             <div className='search-results__container'>
                 <h2 className='search-results__title'>Search results</h2>
-                <div className="search-results__card-container">
+                <div className="search-results__cards-container">
                     <Card />
                     <Card />
                     <Card />

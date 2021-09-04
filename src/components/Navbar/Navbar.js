@@ -2,9 +2,9 @@ import './Navbar.css';
 import { NavLink } from 'react-router-dom';
 import logoutIcon from '../../images/logout.svg';
 
-function Navbar() {
+function Navbar({ theme }) {
     return (
-        <footer className='navbar'>
+        <nav className={'navbar ' + (theme ? 'navbar_theme_' + theme : '')}>
             <div className='navbar__container'>
                 <p className='navbar__title'>NewsExplorer</p>
                 <ul className='navbar__links'>
@@ -16,10 +16,10 @@ function Navbar() {
                 </button>
                 <button className='navbar__user-state-button navbar__user-state-button_type_name'>
                     Elise
-                    <img src={logoutIcon} alt='Logout' className='navbar__logout-icon' />
+                    <div src={logoutIcon} className='navbar__logout-icon'></div>
                 </button>
             </div>
-        </footer>
+        </nav>
     )
 }
 
