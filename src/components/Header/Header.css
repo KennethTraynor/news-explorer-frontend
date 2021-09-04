@@ -8,8 +8,9 @@
     
     margin: 0 auto 0 auto;
     
-    background-image: url(../../images/header_background.png);
+    background-image: url(../../images/header-background.png);
     background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
 }
 

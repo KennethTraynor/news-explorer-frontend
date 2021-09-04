@@ -16,7 +16,7 @@
 
     width: 100%;
 
-    margin: 0 104px 0 104px;
+    margin: 0 40px 0 40px;
 }
 
 .navbar__title {
@@ -64,6 +64,7 @@
     font-style: normal;
     font-weight: normal;
     line-height: 24px;
+    white-space: nowrap;
     
     color: #B6BCBF;
 }
@@ -83,7 +84,8 @@
     padding: 0;
     
     min-height: 48px;
-    min-width: 176px;
+    max-width: 176px;
+    width: 100%;
 
     background-color: transparent;
     
@@ -93,6 +95,7 @@
     font-style: normal;
     font-weight: normal;
     line-height: 24px;
+    white-space: nowrap;
 
     color: white;
 
@@ -107,7 +110,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-width: 112px;
+    max-width: 112px;
     padding: 0 15px 0 19px;
 }
 

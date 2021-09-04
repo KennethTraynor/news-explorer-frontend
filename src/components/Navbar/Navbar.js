@@ -16,7 +16,7 @@ function Navbar() {
                 </button>
                 <button className='navbar__user-state-button navbar__user-state-button_type_name'>
                     Elise
-                    <img src={logoutIcon} alt='Logout' className='navbar__logout-icon'></img>
+                    <img src={logoutIcon} alt='Logout' className='navbar__logout-icon' />
                 </button>
             </div>
         </footer>
