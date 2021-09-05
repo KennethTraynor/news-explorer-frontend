@@ -6,6 +6,7 @@ import Preloader from '../Preloader/Preloader';
 import NoResults from '../NoResults/NoResults';
 import About from '../About/About';
 import Footer from '../Footer/Footer';
+import Popup from '../Popup/Popup';
 
 function Main() {
     return (
@@ -16,6 +17,7 @@ function Main() {
             <NoResults />
             <About />
             <Footer />
+            <Popup />
         </main>
     )
 }
