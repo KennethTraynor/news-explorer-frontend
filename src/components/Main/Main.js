@@ -8,16 +8,16 @@ import About from '../About/About';
 import Footer from '../Footer/Footer';
 import Popup from '../Popup/Popup';
 
-function Main() {
+function Main({ isPopupOpen, closeAllPopups, onPopupBackgroundClick, onPopupOpen }) {
     return (
         <main className='main'>
-            <Header />
+            <Header onPopupOpen={onPopupOpen} />
             <SearchResults />
             <Preloader />
             <NoResults />
             <About />
             <Footer />
-            {/* <Popup /> */}
+            <Popup onClose={closeAllPopups} isOpen={isPopupOpen} onPopupBackgroundClick={onPopupBackgroundClick} />
         </main>
     )
 }

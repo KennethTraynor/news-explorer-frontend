@@ -1,10 +1,10 @@
 import './Popup.css';
 
-function Popup() {
+function Popup({ onClose, isOpen, onPopupBackgroundClick }) {
     return (
-        <div className='popup popup_opened'>
+        <div className={'popup' + (isOpen ? ' popup_opened' : '')} onClick={onPopupBackgroundClick}>
             <div className='popup__container'>
-                <button className='popup__close-button' aria-label='close' name='close' type='button'></button>
+                <button className='popup__close-button' aria-label='close' name='close' type='button' onClick={onClose}></button>
                 <h2 className='popup__title'>Sign up</h2>
                 <form className='popup__form'>
                     
@@ -29,7 +29,7 @@ function Popup() {
                     <span className='popup__error popup__error_type_form'>This username is not available</span>
                     <button className='popup__submit-button' type='submit'>Sign up</button>
                 </form>
-                <p className='popup__subtext'>or <a href='/' class='popup__subtext_link'>Sign in</a></p>
+                <p className='popup__subtext'>or <a href='/' className='popup__subtext_link'>Sign in</a></p>
             </div>
         </div>
     )

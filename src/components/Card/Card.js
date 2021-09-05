@@ -15,7 +15,7 @@ function Card() {
         <div className='card'>
             <div className='card__upper-container'>
                 <img src={cardImage} className='card__image' alt='' />
-                <button className={'card__bookmark-button ' + (bookmarked ? 'card__bookmark-button_active' : '')} onClick={handleBookmarkClick} ></button>
+                <button className={'card__bookmark-button' + (bookmarked ? ' card__bookmark-button_active' : '')} onClick={handleBookmarkClick} ></button>
                 <div className='card__tooltip'>Sign in to save articles</div>
                 <div className='card__keyword'>Nature</div>
             </div>
