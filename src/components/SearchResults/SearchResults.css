@@ -50,6 +50,8 @@
     border: none;
     border-radius: 80px;
     transition: opacity .1s ease-in-out;
+
+    cursor: pointer;
 }
 
 .search-results__more-button:hover {

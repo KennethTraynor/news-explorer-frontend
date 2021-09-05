@@ -17,7 +17,7 @@ function Main() {
             <NoResults />
             <About />
             <Footer />
-            <Popup />
+            {/* <Popup /> */}
         </main>
     )
 }

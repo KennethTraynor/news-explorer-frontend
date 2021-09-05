@@ -27,7 +27,7 @@ function Popup() {
                     </div>
 
                     <span className='popup__error popup__error_type_form'>This username is not available</span>
-                    <button className='popup__submit-button' type='submit'>Sign in</button>
+                    <button className='popup__submit-button' type='submit'>Sign up</button>
                 </form>
                 <p className='popup__subtext'>or <a href='/' class='popup__subtext_link'>Sign in</a></p>
             </div>

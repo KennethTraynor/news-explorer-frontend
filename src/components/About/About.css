@@ -31,20 +31,21 @@
 
 .about__title {
     margin: 0 0 24px 0;
-    font-size: 40px;
     font-family: 'Roboto Slab', Verdana, sans-serif;
     font-style: normal;
-    font-weight: normal;
+    font-weight: 400;
+    font-size: 40px;
     line-height: 46px;
     color: #1A1B22;
 }
 
 .about__text {
     margin: 0;
-    font-size: 18px;
+    padding: 0;
     font-family: 'Roboto', Verdana, sans-serif;
     font-style: normal;
-    font-weight: normal;
+    font-weight: 400;
+    font-size: 18px;
     line-height: 24px;
     color: #1A1B22;
 }

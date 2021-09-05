@@ -60,6 +60,8 @@
     border-radius: 8px;
 
     transition: background-image .1s ease-in-out;
+
+    cursor: pointer;
 }
 
 .card__bookmark-button:hover:not(.card__bookmark-button_active) {
@@ -94,10 +96,9 @@
     font-family: 'Roboto', Verdana, sans-serif;    
     color: black;
     
-    font-weight: 500;
     font-style: normal;
+    font-weight: 500;
     font-size: 12px;
-
     line-height: 14px;
 }
 
@@ -125,10 +126,9 @@
     font-family: 'Roboto', Verdana, sans-serif;    
     color: black;
     
-    font-weight: 500;
     font-style: normal;
+    font-weight: 500;
     font-size: 14px;
-
     line-height: 24px;
 }
 
@@ -146,10 +146,10 @@
     margin: 0 0 12px 0;
     padding: 0;
 
-    font-size: 18px;
     font-family: 'Inter', Verdana, sans-serif;
     font-style: normal;
-    font-weight: normal;
+    font-weight: 400;
+    font-size: 18px;
     line-height: 24px;
     color: #B6BCBF;
 }
@@ -161,10 +161,9 @@
     font-family: 'Roboto Slab', Verdana, sans-serif;    
     color: #1A1B22;
     
-    font-weight: 400;
     font-style: normal;
+    font-weight: 400;
     font-size: 26px;
-    
     line-height: 30px;
 }
 
@@ -179,10 +178,9 @@
     font-family: 'Roboto', Verdana, sans-serif;    
     color: #1A1B22;
     
-    font-weight: 400;
     font-style: normal;
+    font-weight: 400;
     font-size: 16px;
-
     line-height: 22px;
 }
 
@@ -193,11 +191,11 @@
     font-family: 'Roboto Slab', Verdana, sans-serif;    
     color: #B6BCBF;
     
-    font-weight: 700;
     font-style: normal;
+    font-weight: 700;
     font-size: 16px;
+    line-height: 20px;
     
     text-transform: uppercase;
 
-    line-height: 20px;
 }

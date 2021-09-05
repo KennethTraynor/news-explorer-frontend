@@ -10,7 +10,6 @@ function SearchResults() {
                     <Card />
                     <Card />
                     <Card />
-                    <Card />
                 </div>
                 <button className='search-results__more-button'>Show more</button>
             </div>

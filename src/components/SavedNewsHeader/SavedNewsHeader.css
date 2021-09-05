@@ -18,10 +18,10 @@
     margin: 40px 0 28px 0;
     padding: 0;
 
-    font-size: 18px;
     font-family: 'Roboto', Verdana, sans-serif;
     font-style: normal;
-    font-weight: normal;
+    font-weight: 400;
+    font-size: 18px;
     line-height: 24px;
 
     color: rgba(26, 27, 34, 0.5);
@@ -34,10 +34,10 @@
 
     max-width: 530px;
 
-    font-size: 40px;
     font-family: 'Roboto Slab', Verdana, sans-serif;
     font-style: normal;
-    font-weight: normal;
+    font-weight: 400;
+    font-size: 40px;
     line-height: 46px;
 
     color: #1A1B22;
@@ -48,13 +48,13 @@
     margin: 0 0 56px 0;
     padding: 0;
 
-    font-size: 18px;
     font-family: 'Roboto', Verdana, sans-serif;
     font-style: normal;
-    font-weight: normal;
+    font-weight: 400;
+    font-size: 18px;
     line-height: 24px;
 
-    color: rgba(26, 27, 34, 1);
+    color: #1A1B22;
 }
 
 .saved-news-header__keywords-span {

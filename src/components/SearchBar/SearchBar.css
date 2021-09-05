@@ -71,6 +71,8 @@
     
     border: none;
     border-radius: 100px;
+
+    cursor: pointer;
 }
 
 .search-bar__button:hover {

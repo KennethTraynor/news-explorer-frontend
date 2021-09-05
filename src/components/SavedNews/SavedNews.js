@@ -17,10 +17,6 @@ function SavedNews() {
                     <Card />
                     <Card />
                     <Card /> 
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
                 </div>
                 <Footer />
             </div>
