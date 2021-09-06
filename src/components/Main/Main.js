@@ -6,18 +6,33 @@ import Preloader from '../Preloader/Preloader';
 import NoResults from '../NoResults/NoResults';
 import About from '../About/About';
 import Footer from '../Footer/Footer';
-import Popup from '../Popup/Popup';
+import SignupPopup from '../SignupPopup/SignupPopup';
+import SigninPopup from '../SigninPopup/SigninPopup';
+import InfoPopup from '../InfoPopup/InfoPopup';
 
-function Main({ isPopupOpen, closeAllPopups, onPopupBackgroundClick, onPopupOpen }) {
+function Main(
+    {
+        isSignupPopupOpen,
+        onSignupPopupOpen,
+        handleSignup,
+        isSigninPopupOpen,
+        onSigninPopupOpen,
+        isInfoPopupOpen,
+        onInfoPopupOpen,
+        closeAllPopups,
+        onPopupBackgroundClick,
+    }) {
     return (
         <main className='main'>
-            <Header onPopupOpen={onPopupOpen} />
+            <Header onSigninPopupOpen={onSigninPopupOpen} />
             <SearchResults />
             <Preloader />
             <NoResults />
             <About />
             <Footer />
-            <Popup onClose={closeAllPopups} isOpen={isPopupOpen} onPopupBackgroundClick={onPopupBackgroundClick} />
+            <SignupPopup onClose={closeAllPopups} isOpen={isSignupPopupOpen} onPopupBackgroundClick={onPopupBackgroundClick} onLinkClick={onSigninPopupOpen} handleSignup={handleSignup} />
+            <SigninPopup onClose={closeAllPopups} isOpen={isSigninPopupOpen} onPopupBackgroundClick={onPopupBackgroundClick} onLinkClick={onSignupPopupOpen} />
+            <InfoPopup onClose={closeAllPopups} isOpen={isInfoPopupOpen} onPopupBackgroundClick={onPopupBackgroundClick} onLinkClick={onSigninPopupOpen} message='Registration successfully completed!' linkText='Sign in'/>
         </main>
     )
 }

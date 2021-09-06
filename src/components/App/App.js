@@ -6,13 +6,32 @@ import SavedNews from '../SavedNews/SavedNews';
 
 function App() {
 
-    const [isPopupOpen, setPopupOpen] = React.useState(true);
+    const [isSignupPopupOpen, setSignupPopupOpen] = React.useState(false);
+    const [isSigninPopupOpen, setSigninPopupOpen] = React.useState(false);
+    const [isInfoPopupOpen, setInfoPopupOpen] = React.useState(true);
 
     // Popups
 
-    const onPopupOpen = () => {
+    const onSignupPopupOpen = () => {
+        closeAllPopups();
         addPopupKeyListener();
-        setPopupOpen(true);
+        setSignupPopupOpen(true);
+    }
+
+    const handleSignup = () => {
+        onInfoPopupOpen();
+    }
+
+    const onSigninPopupOpen = () => {
+        closeAllPopups();
+        addPopupKeyListener();
+        setSigninPopupOpen(true);
+    }
+
+    const onInfoPopupOpen = () => {
+        closeAllPopups();
+        addPopupKeyListener();
+        setInfoPopupOpen(true);
     }
 
     const onPopupBackgroundClick = (e) => {
@@ -33,7 +52,9 @@ function App() {
 
     const closeAllPopups = () => {
         document.removeEventListener('keydown', onPopupKeyPress, false);
-        setPopupOpen(false);
+        setSignupPopupOpen(false);
+        setSigninPopupOpen(false);
+        setInfoPopupOpen(false);
     }
 
     return (
@@ -41,10 +62,18 @@ function App() {
             <Switch>
                 <Route exact path='/'>
                     <Main
-                        isPopupOpen={isPopupOpen}
+                        isSignupPopupOpen={isSignupPopupOpen}
+                        onSignupPopupOpen={onSignupPopupOpen}
+                        handleSignup={handleSignup}
+
+                        isSigninPopupOpen={isSigninPopupOpen}
+                        onSigninPopupOpen={onSigninPopupOpen}
+
+                        isInfoPopupOpen={isInfoPopupOpen}
+                        onInfoPopupOpen={onInfoPopupOpen}
+                        
                         closeAllPopups={closeAllPopups}
                         onPopupBackgroundClick={onPopupBackgroundClick}
-                        onPopupOpen={onPopupOpen}
                     />
                 </Route>
                 <Route path='/saved-news'><SavedNews /></Route>

@@ -3,9 +3,9 @@ import './SearchBar.css';
 function SearchBar() {
     return (
         <div className='search-bar'>
-            <form className='search-bar__form'>
+            <form action='#' className='search-bar__form'>
                 <input className='search-bar__search-text' placeholder='Enter topic'></input>
-                <button className='search-bar__button' type='submit' >Search</button>
+                <button className='search-bar__button' type='submit'>Search</button>
             </form>
         </div>
     )

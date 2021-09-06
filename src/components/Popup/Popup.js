@@ -1,35 +1,14 @@
+import React from 'react';
+
 import './Popup.css';
 
-function Popup({ onClose, isOpen, onPopupBackgroundClick }) {
+function Popup({ children, popupType, title, onClose, isOpen, onPopupBackgroundClick }) {
     return (
-        <div className={'popup' + (isOpen ? ' popup_opened' : '')} onClick={onPopupBackgroundClick}>
-            <div className='popup__container'>
+        <div className={`popup popup_type_${popupType}` + (isOpen ? ' popup_opened' : '')} onClick={onPopupBackgroundClick}>
+            <div className={`popup__container popup__container_type_${popupType}`}>
                 <button className='popup__close-button' aria-label='close' name='close' type='button' onClick={onClose}></button>
-                <h2 className='popup__title'>Sign up</h2>
-                <form className='popup__form'>
-                    
-                    <div className='popup__field'>
-                        <label className='popup__input-label'>Email</label>
-                        <input className='popup__input' placeholder='Enter email' type='email' ></input>
-                        <span className='popup__error popup__error_type_input'>Invalid email address</span>
-                    </div>
-
-                    <div className='popup__field'>
-                        <label className='popup__input-label'>Password</label>
-                        <input className='popup__input' placeholder='Enter password' type='password' ></input>
-                        <span className='popup__error popup__error_type_input'>Invalid password</span>
-                    </div>
-
-                    <div className='popup__field'>
-                        <label className='popup__input-label'>Username</label>
-                        <input className='popup__input' placeholder='Enter your username' type='text' ></input>
-                        <span className='popup__error popup__error_type_input'>Invalid username</span>
-                    </div>
-
-                    <span className='popup__error popup__error_type_form'>This username is not available</span>
-                    <button className='popup__submit-button' type='submit'>Sign up</button>
-                </form>
-                <p className='popup__subtext'>or <a href='/' className='popup__subtext_link'>Sign in</a></p>
+                <h2 className='popup__title'>{title}</h2>
+                {children}
             </div>
         </div>
     )
