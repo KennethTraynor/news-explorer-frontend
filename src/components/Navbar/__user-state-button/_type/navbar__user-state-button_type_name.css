@@ -1,0 +1,8 @@
+.navbar__user-state-button_type_name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: auto;
+    width: auto;
+    padding: 0 15px 0 19px;
+}

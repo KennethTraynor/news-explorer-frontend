@@ -1,0 +1,14 @@
+.no-results__main-text {
+    padding: 0;
+    margin: 0 0 16px 0;
+
+    max-width: 250px;
+
+    font-family: 'Roboto Slab', Verdana, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 30px;
+
+    color: #1A1B22;
+}

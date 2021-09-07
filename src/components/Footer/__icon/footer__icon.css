@@ -1,0 +1,13 @@
+.footer__icon {
+    padding: 0;
+    margin: 0;
+
+    text-decoration: none;
+    color: black;
+
+    transition: opacity .15s ease-in-out;
+}
+
+.footer__icon:hover {
+    opacity: .8;
+}

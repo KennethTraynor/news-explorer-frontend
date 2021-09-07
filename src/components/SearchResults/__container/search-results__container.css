@@ -1,0 +1,5 @@
+.search-results__container {
+    margin: 80px 104px 80px 104px;
+    display: flex;
+    flex-direction: column;
+}

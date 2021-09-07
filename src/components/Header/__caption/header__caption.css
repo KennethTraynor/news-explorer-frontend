@@ -1,0 +1,11 @@
+.header__caption {
+    margin: 0 0 88px 0;
+
+    font-family: 'Roboto', Verdana, sans-serif;    
+    color: white;
+
+    font-style:  normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+}

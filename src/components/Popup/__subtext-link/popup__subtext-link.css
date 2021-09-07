@@ -1,0 +1,18 @@
+.popup__subtext-link {
+    margin: 0;
+    padding: 0;
+
+    background-color: transparent;
+    border: none;
+    
+    cursor: pointer;
+
+    font-family: 'Inter', Verdana, sans-serif;    
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #2F71E5;
+    text-decoration: none;
+}

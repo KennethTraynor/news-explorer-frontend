@@ -11,10 +11,10 @@ function SavedNews() {
     return (
         <div className='saved-news'>
             <div className='saved-news__container'>
-                <Navbar theme='dark' />
+                <Navbar theme='light' />
                 <SavedNewsHeader />
                 <ul className="saved-news__cards-container">
-                    {TestCards.map((card) => <Card showDelete={true} showKeyword={true} keyword={card.keyword} date={card.date} description={card.description} title={card.title} source={card.source} image={card.image} />)}
+                    {TestCards.map((card, index) => <Card key={index} showDelete={true} showKeyword={true} keyword={card.keyword} date={card.date} description={card.description} title={card.title} source={card.source} image={card.image} />)}
                 </ul>
                 <Footer />
             </div>

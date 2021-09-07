@@ -1,0 +1,11 @@
+.footer__links {
+    display: flex;
+    flex-direction: row;
+
+    margin: 0 40px 0 0;
+    padding: 0;
+
+    list-style: none;
+
+    color: #1A1B22;
+}

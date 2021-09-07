@@ -1,0 +1,28 @@
+.card__keyword {
+    display: flex;
+    
+    margin: 0;
+    padding: 0 22px 0 22px;
+
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+
+    top: 24px;
+    left: 24px;
+
+    height: 40px;
+    
+    background-color: white;
+
+    border-radius: 8px;
+
+    font-family: 'Roboto', Verdana, sans-serif;    
+    color: black;
+    
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+}

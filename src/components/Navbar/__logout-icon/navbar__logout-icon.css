@@ -1,0 +1,12 @@
+.navbar__logout-icon {
+    width: 24px;
+    height: 24px;
+    margin: 0 0 0 15px;
+    background-image: url(../../../images/logout.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.navbar_theme_light .navbar__logout-icon {
+    background-image: url(../../../images/logout_dark.svg);
+}

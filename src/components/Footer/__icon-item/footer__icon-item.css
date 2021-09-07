@@ -1,0 +1,13 @@
+.footer__icon-item {
+    max-width: 24px;
+    max-height: 24px;
+    height: 100%;
+    width: 100%;
+
+    margin: 0 24px 0 0;
+    padding: 0;
+}
+
+.footer__icon-item:last-of-type {
+    margin: 0;
+}

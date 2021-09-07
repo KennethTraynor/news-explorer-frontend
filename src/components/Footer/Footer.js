@@ -14,7 +14,7 @@ function Footer() {
                     </ul>
                     <ul className='footer__icon-links'>
                         <li className='footer__icon-item'><a href='https://github.com/' rel='noreferrer' target='_blank' className='footer__icon'><img src={githubIcon} alt="Github" /></a></li>
-                        <li className='footer__icon-item'><a href='https://facebook.com/' rel='noreferrer' target='_blank' className='footer_icon'><img src={facebookIcon} alt="Facebook" /></a></li>
+                        <li className='footer__icon-item'><a href='https://facebook.com/' rel='noreferrer' target='_blank' className='footer__icon'><img src={facebookIcon} alt="Facebook" /></a></li>
                     </ul>
                 </nav>
             </div>

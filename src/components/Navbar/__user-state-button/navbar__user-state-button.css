@@ -1,0 +1,41 @@
+.navbar__user-state-button {
+    margin: 0;
+    padding: 0 12px 0 12px;
+    
+    min-height: 48px;
+    min-width: 176px;
+
+    background-color: transparent;
+    
+    text-decoration: none;
+    font-family: 'Roboto', Verdana, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    white-space: nowrap;
+
+    color: white;
+
+    cursor: pointer;
+
+    border-radius: 100px;
+    box-sizing: border-box;
+    border: 1px solid white;
+    transition: opacity .15s ease-in-out;
+}
+
+.navbar__user-state-button:hover {
+    opacity: .8;
+}
+
+.navbar_theme_light .navbar__user-state-button {
+    color: #1A1B22;
+    border-color: #D1D2D6;
+    transition: border-color .15s ease-in-out;
+}
+
+.navbar_theme_light .navbar__user-state-button:hover {
+    border-color: #1A1B22;
+    opacity: 1;
+}

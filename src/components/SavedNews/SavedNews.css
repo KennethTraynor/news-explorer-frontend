@@ -1,3 +1,6 @@
+@import url(__container/saved-news__container.css);
+@import url(__cards-container/saved-news__cards-containers.css);
+
 .saved-news {
     display: flex;
     flex-direction: column;
@@ -10,25 +13,4 @@
     padding: 0;
 
     background-color: white;
-}
-
-.saved-news__container {
-    max-width: 1440px;
-    width: 100%;
-
-    margin: 0;
-    padding: 0;
-}
-
-.saved-news__cards-container {
-    margin: 0;
-    padding: 62px 102px 62px 102px;
-
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-flow: row;
-    row-gap: 16px;
-    column-gap: 16px;
-
-    background-color: #F5F6F7;
 }

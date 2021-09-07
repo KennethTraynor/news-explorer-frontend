@@ -9,7 +9,7 @@ function SearchResults() {
             <div className='search-results__container'>
                 <h2 className='search-results__title'>Search results</h2>
                 <ul className="search-results__cards-container">
-                    {TestCards.map((card) => <Card showBookmark={true} keyword={card.keyword} date={card.date} description={card.description} title={card.title} source={card.source} image={card.image} />)}
+                    {TestCards.map((card, index) => <Card key={index} showBookmark={true} keyword={card.keyword} date={card.date} description={card.description} title={card.title} source={card.source} image={card.image} />)}
                 </ul>
                 <button className='search-results__more-button'>Show more</button>
             </div>

@@ -18,6 +18,7 @@ function App() {
         setSignupPopupOpen(true);
     }
 
+    // Temporary for testing transition from Signup to Info popup
     const handleSignup = () => {
         onInfoPopupOpen();
     }

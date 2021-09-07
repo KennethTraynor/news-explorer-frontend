@@ -1,0 +1,31 @@
+.search-results__more-button {
+    margin: 64px auto 0 auto;
+    width: 288px;
+    min-height: 64px;
+    
+    position: relative;
+
+    z-index: 1;
+    
+    background-color: white;
+    
+    color: #1A1B22;
+
+    font-family: 'Roboto', Verdana, sans-serif;    
+    font-weight: 500;
+    font-style:  normal;
+    font-size: 18px;
+    text-align: center;
+
+    line-height: 24px;
+    
+    border: none;
+    border-radius: 80px;
+    transition: opacity .1s ease-in-out;
+
+    cursor: pointer;
+}
+
+.search-results__more-button:hover {
+    opacity: .9;
+}

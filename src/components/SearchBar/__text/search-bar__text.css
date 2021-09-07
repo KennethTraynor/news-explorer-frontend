@@ -1,0 +1,23 @@
+.search-bar__search-text {
+    margin: auto 40px auto 24px;
+    padding: 0;
+    width: 100%;
+
+    border: none;
+    outline: none;
+    background-color: transparent;
+    
+    font-family: 'Roboto', Verdana, sans-serif;    
+    font-weight: 400;
+    font-style:  normal;
+    font-size: 16px;
+    color: #1A1B22;
+
+    caret-color: #2F71E5;
+
+    line-height: 22px;
+}
+
+.search-bar__search-text::placeholder {
+    color: #B6BCBF;
+}

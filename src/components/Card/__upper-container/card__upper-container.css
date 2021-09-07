@@ -1,0 +1,14 @@
+.card__upper-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    max-width: 100%;
+    min-height: 272px;
+        
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}

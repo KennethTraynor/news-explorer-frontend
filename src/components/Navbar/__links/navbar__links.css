@@ -1,0 +1,10 @@
+.navbar__links {
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 0 auto;
+    padding: 0;
+
+    height: 100%;
+    
+    list-style: none;
+}

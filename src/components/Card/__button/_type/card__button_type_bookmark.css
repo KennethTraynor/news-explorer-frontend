@@ -1,0 +1,11 @@
+.card__button_type_bookmark {
+    background-image: url(../../../../images/bookmark_default.svg);
+}
+
+.card__button_type_bookmark.card__button:hover:not(.card__button_active) {
+    background-image: url(../../../../images/bookmark_hover.svg);
+}
+
+.card__button_type_bookmark.card__button_active {
+    background-image: url(../../../../images/bookmark_active.svg);
+}

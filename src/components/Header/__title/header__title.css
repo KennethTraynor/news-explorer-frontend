@@ -1,0 +1,11 @@
+.header__title {
+    margin: 80px 0 32px 0;
+
+    font-family: 'Roboto Slab', Verdana, sans-serif;    
+    color: white;
+    
+    font-style: normal;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 64px;
+}

@@ -1,0 +1,34 @@
+.navbar__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+
+    margin: 0 34px 0 0;
+    padding: 0 10px 0 10px;
+    
+    text-decoration: none;
+    font-family: 'Roboto', Verdana, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    white-space: nowrap;
+    
+    color: #B6BCBF;
+
+    transition: color .15s ease-in-out;
+}
+
+.navbar__link:hover:not(.navbar__link_active) {
+    color: white;
+}
+
+.navbar_theme_light .navbar__link {
+    color: #1A1B22;
+}
+
+.navbar_theme_light .navbar__link:hover:not(.navbar__link_active) {
+    color: #B6BCBF;
+}
