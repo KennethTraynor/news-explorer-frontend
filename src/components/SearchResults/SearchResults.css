@@ -60,6 +60,7 @@
 
 .search-results__cards-container {
     margin: 0 auto 0 auto;
+    padding: 0;
     width: 100%;
 
     display: grid;

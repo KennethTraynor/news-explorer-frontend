@@ -84,8 +84,7 @@
     padding: 0 12px 0 12px;
     
     min-height: 48px;
-    max-width: 176px;
-    width: 100%;
+    min-width: 176px;
 
     background-color: transparent;
     
@@ -110,7 +109,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 112px;
+    min-width: auto;
+    width: auto;
     padding: 0 15px 0 19px;
 }
 

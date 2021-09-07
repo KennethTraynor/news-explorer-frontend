@@ -26,8 +26,6 @@ function Main(
         <main className='main'>
             <Header onSigninPopupOpen={onSigninPopupOpen} />
             <SearchResults />
-            <Preloader />
-            <NoResults />
             <About />
             <Footer />
             <SignupPopup onClose={closeAllPopups} isOpen={isSignupPopupOpen} onPopupBackgroundClick={onPopupBackgroundClick} onLinkClick={onSigninPopupOpen} handleSignup={handleSignup} />

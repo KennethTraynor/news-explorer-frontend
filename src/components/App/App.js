@@ -8,7 +8,7 @@ function App() {
 
     const [isSignupPopupOpen, setSignupPopupOpen] = React.useState(false);
     const [isSigninPopupOpen, setSigninPopupOpen] = React.useState(false);
-    const [isInfoPopupOpen, setInfoPopupOpen] = React.useState(true);
+    const [isInfoPopupOpen, setInfoPopupOpen] = React.useState(false);
 
     // Popups
 

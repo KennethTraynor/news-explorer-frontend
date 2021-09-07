@@ -30,11 +30,19 @@
     color: #B6BCBF;
 }
 
+.footer__nav-section {
+    display: flex;
+    flex-direction: row;
+    
+    margin: 0 0 0 auto;
+    padding: 0;
+}
+
 .footer__links {
     display: flex;
     flex-direction: row;
 
-    margin: 0 40px 0 auto;
+    margin: 0 40px 0 0;
     padding: 0;
 
     list-style: none;

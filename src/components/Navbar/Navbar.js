@@ -15,7 +15,7 @@ function Navbar({ theme, onSigninPopupOpen }) {
                     Sign in
                 </button>
                 <button className='navbar__user-state-button navbar__user-state-button_type_name'>
-                    Elise
+                    Username
                     <div src={logoutIcon} className='navbar__logout-icon'></div>
                 </button>
             </div>
