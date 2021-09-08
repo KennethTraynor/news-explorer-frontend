@@ -22,5 +22,6 @@
     .popup__container {
         top: 56px;
         height: 100%;
+        padding: 16px;
     }
 }

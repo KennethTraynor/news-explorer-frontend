@@ -1,0 +1,7 @@
+.navbar__menu-button_open {
+    background-image: url(../../../../images/cross.svg);
+}
+
+.navbar_theme_light .navbar__menu-button_open {
+    background-image: url(../../../../images/cross_dark.svg);
+}

@@ -41,3 +41,18 @@
         min-width: 64px;
     }
 }
+
+@media screen and (max-width: 320px) {
+    .navbar__link {
+        justify-content: left;
+        
+        margin: 0;
+
+        height: auto;
+        min-width: 100%;
+        
+        font-size: 18px;
+        line-height: 56px;
+        color: white;
+    }
+}

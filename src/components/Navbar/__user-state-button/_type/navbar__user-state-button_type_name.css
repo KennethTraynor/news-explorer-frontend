@@ -1,8 +1,17 @@
 .navbar__user-state-button_type_name {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-width: auto;
-    width: auto;
-    padding: 0 15px 0 19px;
+    min-width: 0;
+    padding: 12px 15px 12px 19px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .navbar__user-state-button_type_name {
+        padding: 8px 13px 8px 15px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .navbar__user-state-button_type_name {
+       padding: 16px auto 16px auto;
+    }
 }

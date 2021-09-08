@@ -31,7 +31,7 @@
     background-color: #2A65CC;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 320px) {
 
     .search-bar__button {
         position: absolute;

@@ -1,0 +1,8 @@
+.navbar__menu-container {
+    display: flex;
+    flex-direction: column;
+    margin: 56px 16px 24px 16px;
+    padding: 0;
+
+    width: 100%;
+}

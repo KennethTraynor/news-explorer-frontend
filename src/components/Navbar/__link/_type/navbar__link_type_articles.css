@@ -11,3 +11,11 @@
         min-width: 160px;
     }
 }
+
+@media screen and (max-width: 320px) {
+    .navbar__link_type_articles {
+        font-size: 18px;
+        margin: 0;
+        min-width: 100%;
+    }
+}

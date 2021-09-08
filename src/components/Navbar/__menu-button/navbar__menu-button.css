@@ -12,6 +12,7 @@
     background-color: transparent;
     background-position: center;
     background-repeat: no-repeat;
+    background-size: 24px;
 
     transition: opacity .1s ease-in-out;
 
@@ -20,6 +21,10 @@
 
 .navbar__menu-button:hover {
     opacity: .5;
+}
+
+.navbar_theme_light .navbar__menu-button {
+    background-image: url(../../../images/menu-button_dark.svg);
 }
 
 @media screen and (max-width: 320px) {

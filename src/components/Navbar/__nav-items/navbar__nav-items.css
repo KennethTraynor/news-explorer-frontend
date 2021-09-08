@@ -1,4 +1,4 @@
-.navbar__links {
+.navbar__nav-items {
     display: flex;
     flex-direction: row;
     margin: 0 0 0 auto;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 320px) {
-    .navbar__links {
+    .navbar__nav-items {
         display: none;
     }
 }

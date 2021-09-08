@@ -1,15 +1,19 @@
 .navbar__user-state-button {
-    margin: auto 0 auto 0;
-    padding: 0 12px 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+    padding: 12px auto 12px auto;
     
-    max-height: 48px;
+    min-height: 48px;
     min-width: 176px;
-    height: 100%;
 
     background-color: transparent;
     text-decoration: none;
     font-family: 'Roboto', Verdana, sans-serif;
     font-style: normal;
+    text-align: center;
     font-weight: 500;
     font-size: 18px;
     line-height: 24px;
@@ -42,9 +46,23 @@
 
 @media screen and (max-width: 768px) {
     .navbar__user-state-button {
-        max-height: 40px;
+        min-height: 40px;
         min-width: 152px;
+        
+        padding: 8px auto 8px auto;
 
         font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .navbar__user-state-button {
+        min-height: 56px;
+        width: 100%;
+
+        padding: 0;
+
+        margin-top: auto;
+        font-size: 18px;
     }
 }
