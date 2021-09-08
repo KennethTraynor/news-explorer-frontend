@@ -5,7 +5,19 @@
     margin: 0 40px 0 0;
     padding: 0;
 
-    list-style: none;
-
     color: #1A1B22;
+}
+
+@media screen and (max-width: 920px) {
+    .footer__links {
+        margin-right: 24px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .footer__links {
+        flex-direction: column;
+        margin: 0;
+        width: 100%;
+    }
 }

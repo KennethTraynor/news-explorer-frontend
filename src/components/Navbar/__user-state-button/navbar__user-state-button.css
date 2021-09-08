@@ -1,16 +1,16 @@
 .navbar__user-state-button {
-    margin: 0;
+    margin: auto 0 auto 0;
     padding: 0 12px 0 12px;
     
-    min-height: 48px;
+    max-height: 48px;
     min-width: 176px;
+    height: 100%;
 
     background-color: transparent;
-    
     text-decoration: none;
     font-family: 'Roboto', Verdana, sans-serif;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 18px;
     line-height: 24px;
     white-space: nowrap;
@@ -38,4 +38,13 @@
 .navbar_theme_light .navbar__user-state-button:hover {
     border-color: #1A1B22;
     opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar__user-state-button {
+        max-height: 40px;
+        min-width: 152px;
+
+        font-size: 16px;
+    }
 }

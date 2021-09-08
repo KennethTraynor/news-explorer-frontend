@@ -1,4 +1,17 @@
 .about__text-container {
-    margin: 131px 0 0 56px;
+    margin: 131px 0 0 0;
     max-width: 600px;
+}
+
+@media screen and (max-width: 768px) {
+    .about__text-container {
+        margin-top: 40px;
+        max-width: auto;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .about__text-container {
+        margin: 0 auto 0 auto;
+    }
 }

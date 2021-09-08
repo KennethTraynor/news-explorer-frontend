@@ -4,7 +4,7 @@
     
     font-family: 'Roboto Slab', Verdana, sans-serif;  
     font-style: normal;
-    font-weight: 400;
+    font-weight: 700;
     font-size: 20px;
     line-height: 24px;
     color: white;
@@ -12,4 +12,10 @@
 
 .navbar_theme_light .navbar__title {
     color: #1A1B22;
+}
+
+@media screen and (max-width: 320px) {
+    .navbar__title {
+        font-size: 16px;
+    }
 }

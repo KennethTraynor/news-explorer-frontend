@@ -24,15 +24,17 @@ function Main(
     }) {
     return (
         <main className='main'>
-            <Header onSigninPopupOpen={onSigninPopupOpen} />
-            <SearchResults />
-            <Preloader />
-            <NoResults />
-            <About />
-            <Footer />
-            <SignupPopup onClose={closeAllPopups} isOpen={isSignupPopupOpen} onPopupBackgroundClick={onPopupBackgroundClick} onLinkClick={onSigninPopupOpen} handleSignup={handleSignup} />
-            <SigninPopup onClose={closeAllPopups} isOpen={isSigninPopupOpen} onPopupBackgroundClick={onPopupBackgroundClick} onLinkClick={onSignupPopupOpen} />
-            <InfoPopup onClose={closeAllPopups} isOpen={isInfoPopupOpen} onPopupBackgroundClick={onPopupBackgroundClick} onLinkClick={onSigninPopupOpen} message='Registration successfully completed!' linkText='Sign in'/>
+            <div className='main__container'>
+                <Header onSigninPopupOpen={onSigninPopupOpen} />
+                <SearchResults />
+                <Preloader />
+                <NoResults />
+                <About />
+                <Footer />
+                <SignupPopup onClose={closeAllPopups} isOpen={isSignupPopupOpen} onPopupBackgroundClick={onPopupBackgroundClick} onLinkClick={onSigninPopupOpen} handleSignup={handleSignup} />
+                <SigninPopup onClose={closeAllPopups} isOpen={isSigninPopupOpen} onPopupBackgroundClick={onPopupBackgroundClick} onLinkClick={onSignupPopupOpen} />
+                <InfoPopup onClose={closeAllPopups} isOpen={isInfoPopupOpen} onPopupBackgroundClick={onPopupBackgroundClick} onLinkClick={onSigninPopupOpen} message='Registration successfully completed!' linkText='Sign in'/>
+            </div>
         </main>
     )
 }

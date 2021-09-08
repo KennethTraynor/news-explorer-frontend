@@ -17,3 +17,15 @@
     background-position: center;
     background-size: cover;
 }
+
+@media screen and (max-width: 768px) {
+    .header {
+        min-height: 400px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .header {
+        min-height: 536px;
+    }
+}

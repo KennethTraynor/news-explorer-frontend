@@ -14,3 +14,19 @@
     font-size: 26px;
     line-height: 30px;
 }
+
+@media screen and (max-width: 768px) {
+    .card__title {
+        font-size: 22px;
+        line-height: 24px;
+        max-height: 72px;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .card__title {
+        max-height: 48px;
+        margin-bottom: 14px;
+    }
+}

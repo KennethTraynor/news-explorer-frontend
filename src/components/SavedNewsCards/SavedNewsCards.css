@@ -1,0 +1,15 @@
+@import url(__layout/saved-news-cards__layout.css);
+
+.saved-news-cards {
+    display: flex;
+
+    margin: 0 auto 0 auto;
+    padding: 0;
+
+    max-width: 1440px;
+    width: 100%;
+
+    background-color: #F5F6F7;
+
+    overflow: hidden;
+}

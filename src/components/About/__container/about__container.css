@@ -1,0 +1,25 @@
+.about__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    margin: 0 104px 0 104px;
+    padding: 0;
+    width: 100%;
+}
+
+
+@media screen and (max-width: 768px) {
+    .about__container {
+        margin: 0 40px 0 40px
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .about__container {
+        flex-direction: column;
+        justify-content: flex-start;
+
+        margin: 32px 16px 0 16px;
+    }
+}

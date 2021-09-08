@@ -9,4 +9,13 @@
 
     margin: 0;
     padding: 0;
+
+    height: 64px;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .search-bar {
+        height: 56px;
+    }
 }

@@ -1,0 +1,29 @@
+.navbar__menu-button {
+    display: none;
+    margin: 0 0 0 auto;
+    padding: 0;
+
+    width: 24px;
+    height: 24px;
+    
+    border: none;
+    
+    background-image: url(../../../images/menu-button.svg);
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transition: opacity .1s ease-in-out;
+
+    cursor: pointer;
+}
+
+.navbar__menu-button:hover {
+    opacity: .5;
+}
+
+@media screen and (max-width: 320px) {
+    .navbar__menu-button {
+        display: flex;
+    }
+}

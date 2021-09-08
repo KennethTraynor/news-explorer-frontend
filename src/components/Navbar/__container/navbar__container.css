@@ -2,8 +2,16 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    position: relative;
+    z-index: 1;
 
     width: 100%;
 
     margin: 0 40px 0 40px;
+}
+
+@media screen and (max-width: 320px) {
+    .navbar__container {
+        margin: 16px;
+    }
 }

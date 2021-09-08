@@ -18,3 +18,13 @@
 
     cursor: pointer;
 }
+
+@media screen and (max-width: 320px) {
+    .popup__close-button {
+        background-size: 24px;
+        width: 24px;
+        height: 24px;
+        top: calc(-24px - 16px);
+        right: 16px
+    }
+}

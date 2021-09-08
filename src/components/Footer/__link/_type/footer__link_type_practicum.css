@@ -1,3 +1,9 @@
 .footer__link_type_practicum {
     min-width: 192px;
 }
+
+@media screen and (max-width: 920px) {
+    .footer__link_type_practicum {
+        min-width: 176px;
+    }
+}

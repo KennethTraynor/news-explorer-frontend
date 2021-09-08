@@ -5,3 +5,10 @@
     margin: 0 0 0 auto;
     padding: 0;
 }
+
+@media screen and (max-width: 320px) {
+    .footer__nav-section  {
+        margin: 0;
+        width: 100%;
+    }
+}

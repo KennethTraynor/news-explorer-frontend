@@ -1,16 +1,10 @@
-@import url(__container/saved-news__container.css);
-@import url(__cards-container/saved-news__cards-containers.css);
-
 .saved-news {
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
 
+    width: 100%;
     min-height: 100vh;
-    
+
     margin: 0;
     padding: 0;
-
-    background-color: white;
 }

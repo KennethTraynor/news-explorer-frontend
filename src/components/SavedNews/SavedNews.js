@@ -1,23 +1,15 @@
 import './SavedNews.css';
 
 import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
-import Card from '../Card/Card';
 import Footer from '../Footer/Footer';
-import Navbar from '../Navbar/Navbar';
-import { TestCards } from '../../utils/constants';
-
+import SavedNewsCards from '../SavedNewsCards/SavedNewsCards';
 
 function SavedNews() {
     return (
         <div className='saved-news'>
-            <div className='saved-news__container'>
-                <Navbar theme='light' />
-                <SavedNewsHeader />
-                <ul className="saved-news__cards-container">
-                    {TestCards.map((card, index) => <Card key={index} showDelete={true} showKeyword={true} keyword={card.keyword} date={card.date} description={card.description} title={card.title} source={card.source} image={card.image} />)}
-                </ul>
-                <Footer />
-            </div>
+            <SavedNewsHeader />
+            <SavedNewsCards />
+            <Footer />
         </div>
     )
 }

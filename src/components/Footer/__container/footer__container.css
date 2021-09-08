@@ -7,3 +7,16 @@
 
     margin: 0 104px 0 104px;
 }
+
+@media screen and (max-width: 920px) {
+    .footer__container {
+        margin: 0 40px 0 40px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .footer__container {
+        flex-direction: column-reverse;
+        margin: 20px 16px 22px 16px;
+    }
+}

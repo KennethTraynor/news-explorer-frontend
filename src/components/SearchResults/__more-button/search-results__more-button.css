@@ -1,7 +1,8 @@
 .search-results__more-button {
     margin: 64px auto 0 auto;
-    width: 288px;
+    max-width: 288px;
     min-height: 64px;
+    width: 100%;
     
     position: relative;
 
@@ -15,9 +16,8 @@
     font-weight: 500;
     font-style:  normal;
     font-size: 18px;
-    text-align: center;
-
     line-height: 24px;
+    text-align: center;
     
     border: none;
     border-radius: 80px;
@@ -28,4 +28,20 @@
 
 .search-results__more-button:hover {
     opacity: .9;
+}
+
+@media screen and (max-width: 768px) {
+    .search-results__more-button {
+        margin-top: 32px;
+
+        max-width: 240px;
+        min-height: 56px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .search-results__more-button {
+        margin-top: 16px;
+        max-width: 100%;
+    }
 }

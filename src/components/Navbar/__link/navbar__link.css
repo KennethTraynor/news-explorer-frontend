@@ -4,9 +4,10 @@
     justify-content: center;
 
     height: 100%;
+    min-width: 68px;
 
     margin: 0 34px 0 0;
-    padding: 0 10px 0 10px;
+    padding: 0;
     
     text-decoration: none;
     font-family: 'Roboto', Verdana, sans-serif;
@@ -31,4 +32,12 @@
 
 .navbar_theme_light .navbar__link:hover:not(.navbar__link_active) {
     color: #B6BCBF;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar__link {
+        font-size: 16px;
+        margin-right: 16px;
+        min-width: 64px;
+    }
 }

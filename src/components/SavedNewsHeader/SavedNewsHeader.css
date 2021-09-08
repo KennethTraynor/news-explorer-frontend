@@ -8,9 +8,22 @@
     display: flex;
     flex-direction: column;
 
-    margin: 0;
+    margin: 0 auto 0 auto;
     padding: 0;
 
     min-height: 214px;
+    max-width: 1440px;
     width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .saved-news-header {
+        min-height: 204px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .saved-news-header {
+        min-height: 246px;
+    }
 }

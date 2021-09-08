@@ -23,7 +23,6 @@
     padding: 0;
 
     height: 576px;
-    max-width: 400px;
     min-width: 0;
     width: 100%;
 
@@ -34,4 +33,16 @@
 
 .card:hover {
     z-index: 1;
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        height: 420px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .card {
+        height: 440px;
+    }
 }
