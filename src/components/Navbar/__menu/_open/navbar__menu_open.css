@@ -1,0 +1,7 @@
+@media screen and (max-width: 320px) {
+    .navbar__menu_open {
+        visibility: visible;
+        opacity: 1;
+        transition-delay: 0s;
+    }
+}

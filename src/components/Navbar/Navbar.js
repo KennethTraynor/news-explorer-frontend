@@ -2,7 +2,16 @@ import './Navbar.css';
 import { NavLink } from 'react-router-dom';
 import logoutIcon from '../../images/logout.svg';
 
-function Navbar({ theme, onSigninPopupOpen, menuOpen = true }) {
+function Navbar({ theme, onSigninPopupOpen, isNavMenuOpen, onNavMenuOpen, onNavMenuClose, onNavMenuBackgroundClick }) {
+
+    const handleMenuButtonClick = () => {
+        if(isNavMenuOpen) {
+            onNavMenuClose();
+        } else {
+            onNavMenuOpen();
+        }
+    }
+
     return (
         <nav className={'navbar' + (theme ? ' navbar_theme_' + theme : '')}>
             <div className='navbar__bar'>
@@ -18,11 +27,11 @@ function Navbar({ theme, onSigninPopupOpen, menuOpen = true }) {
                             <button className='navbar__user-state-button navbar__user-state-button_type_name'>Username<div src={logoutIcon} className='navbar__logout-icon'></div></button>
                         </li>
                     </ul>
-                    <button className={'navbar__menu-button' + (menuOpen ? ' navbar__menu-button_open' : '')}></button>
+                    <button className={'navbar__menu-button' + (isNavMenuOpen ? ' navbar__menu-button_open' : '')} onClick={handleMenuButtonClick}></button>
                 </div>
             </div>
-            <div className={'navbar__menu' + (menuOpen ? ' navbar__menu_open' : '')}>
-                <div className='navbar__menu-overlay'></div>
+            <div className={'navbar__menu' + (isNavMenuOpen ? ' navbar__menu_open' : '')}>
+                <div className='navbar__menu-overlay' onClick={onNavMenuBackgroundClick}></div>
                 <ul className='navbar__menu-container'>
                     <li className='navbar__nav-item'>
                         <div className='navbar__menu-links'>

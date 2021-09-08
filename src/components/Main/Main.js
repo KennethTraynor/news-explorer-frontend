@@ -21,11 +21,22 @@ function Main(
         onInfoPopupOpen,
         closeAllPopups,
         onPopupBackgroundClick,
+        isNavMenuOpen,
+        onNavMenuOpen,
+        onNavMenuClose,
+        onNavMenuBackgroundClick,
     }) {
     return (
         <main className='main'>
             <div className='main__container'>
-                <Header onSigninPopupOpen={onSigninPopupOpen} />
+                <Header
+                    onSigninPopupOpen={onSigninPopupOpen}
+                    
+                    isNavMenuOpen={isNavMenuOpen}
+                    onNavMenuOpen={onNavMenuOpen}
+                    onNavMenuClose={onNavMenuClose}
+                    onNavMenuBackgroundClick={onNavMenuBackgroundClick}
+                />
                 <SearchResults />
                 <Preloader />
                 <NoResults />
@@ -33,7 +44,7 @@ function Main(
                 <Footer />
                 <SignupPopup onClose={closeAllPopups} isOpen={isSignupPopupOpen} onPopupBackgroundClick={onPopupBackgroundClick} onLinkClick={onSigninPopupOpen} handleSignup={handleSignup} />
                 <SigninPopup onClose={closeAllPopups} isOpen={isSigninPopupOpen} onPopupBackgroundClick={onPopupBackgroundClick} onLinkClick={onSignupPopupOpen} />
-                <InfoPopup onClose={closeAllPopups} isOpen={isInfoPopupOpen} onPopupBackgroundClick={onPopupBackgroundClick} onLinkClick={onSigninPopupOpen} message='Registration successfully completed!' linkText='Sign in'/>
+                <InfoPopup onClose={closeAllPopups} isOpen={isInfoPopupOpen} onPopupBackgroundClick={onPopupBackgroundClick} onLinkClick={onSigninPopupOpen} message='Registration successfully completed!' linkText='Sign in' />
             </div>
         </main>
     )

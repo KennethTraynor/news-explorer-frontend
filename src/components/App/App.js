@@ -9,6 +9,7 @@ function App() {
     const [isSignupPopupOpen, setSignupPopupOpen] = React.useState(false);
     const [isSigninPopupOpen, setSigninPopupOpen] = React.useState(false);
     const [isInfoPopupOpen, setInfoPopupOpen] = React.useState(false);
+    const [isNavMenuOpen, setNavMenuOpen] = React.useState(false);
 
     // Popups
 
@@ -58,6 +59,23 @@ function App() {
         setInfoPopupOpen(false);
     }
 
+    // Nav Menu
+
+    const onNavMenuOpen = () => {
+        setNavMenuOpen(true);
+    }
+
+    const onNavMenuClose = () => {
+        setNavMenuOpen(false);
+    }
+
+    const onNavMenuBackgroundClick = (e) => {
+        if (e.target.classList.contains('navbar__menu-overlay')) {
+            onNavMenuClose();
+        }
+    }
+
+
     return (
         <div className='app'>
             <Switch>
@@ -72,12 +90,18 @@ function App() {
 
                         isInfoPopupOpen={isInfoPopupOpen}
                         onInfoPopupOpen={onInfoPopupOpen}
-                        
+
+
                         closeAllPopups={closeAllPopups}
                         onPopupBackgroundClick={onPopupBackgroundClick}
+
+                        isNavMenuOpen={isNavMenuOpen}
+                        onNavMenuOpen={onNavMenuOpen}
+                        onNavMenuClose={onNavMenuClose}
+                        onNavMenuBackgroundClick={onNavMenuBackgroundClick}
                     />
                 </Route>
-                <Route path='/saved-news'><SavedNews /></Route>
+                <Route path='/saved-news'><SavedNews isNavMenuOpen={isNavMenuOpen} onNavMenuOpen={onNavMenuOpen} onNavMenuClose={onNavMenuClose} onNavMenuBackgroundClick={onNavMenuBackgroundClick} /></Route>
                 <Route><Redirect to='/'></Redirect></Route>
             </Switch>
         </div>

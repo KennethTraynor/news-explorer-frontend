@@ -55,4 +55,8 @@
         line-height: 56px;
         color: white;
     }
+
+    .navbar_theme_light .navbar__link:hover:not(.navbar__link_active) {
+        color: #1A1B22;
+    }  
 }

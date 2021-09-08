@@ -15,6 +15,7 @@
 @import url(__menu-overlay/navbar__menu-overlay.css);
 @import url(__menu-container/navbar__menu-container.css);
 @import url(__menu-links/navbar__menu-links.css);
+@import url(__menu/_open/navbar__menu_open.css);
 
 .navbar {
     display: flex;

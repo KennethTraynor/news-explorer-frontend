@@ -1,5 +1,5 @@
 .navbar__menu {
-    display: flex;
+    display: none;
     position: absolute;
 
     top: 0;
@@ -10,8 +10,19 @@
     background-color: #1A1B22;
 
     border-radius: 0 0 16px 16px;
+
+    opacity: 0;
+
+    visibility: hidden;
+    transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .navbar_theme_light .navbar__menu {
     background-color: white;
+}
+
+@media screen and (max-width: 320px) {
+    .navbar__menu {
+        display: flex;
+    }
 }
