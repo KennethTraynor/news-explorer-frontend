@@ -14,7 +14,7 @@
     color: #1A1B22;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .card__description {
         max-height: 88px;
     }

@@ -10,17 +10,23 @@
     column-gap: 16px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .search-results__cards-container  {
         row-gap: 8px;
         column-gap: 8px;
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 700px) {
     .search-results__cards-container  {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         row-gap: 10px;
         column-gap: 10px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .search-results__cards-container  {
+        grid-template-columns: 1fr;
     }
 }

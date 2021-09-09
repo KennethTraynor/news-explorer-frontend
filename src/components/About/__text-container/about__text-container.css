@@ -10,7 +10,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
     .about__text-container {
         margin: 0 auto 0 auto;
     }

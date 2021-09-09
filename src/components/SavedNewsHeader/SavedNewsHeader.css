@@ -16,13 +16,13 @@
     width: 100%;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .saved-news-header {
         min-height: 204px;
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
     .saved-news-header {
         min-height: 246px;
     }

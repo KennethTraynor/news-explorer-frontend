@@ -22,7 +22,7 @@
     opacity: .8;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
     .footer__link {
         justify-content: left;
         line-height: 48px;

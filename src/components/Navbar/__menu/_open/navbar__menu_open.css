@@ -1,4 +1,4 @@
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 700px) {
     .navbar__menu_open {
         visibility: visible;
         opacity: 1;

@@ -27,7 +27,7 @@
     background-image: url(../../../images/menu-button_dark.svg);
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 700px) {
     .navbar__menu-button {
         display: flex;
     }

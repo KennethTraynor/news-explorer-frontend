@@ -44,7 +44,7 @@
     opacity: 1;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .navbar__user-state-button {
         min-height: 40px;
         min-width: 152px;
@@ -55,7 +55,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 700px) {
     .navbar__user-state-button {
         min-height: 56px;
         width: 100%;

@@ -35,13 +35,13 @@
     z-index: 1;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .card {
         height: 420px;
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 500px) {
     .card {
         height: 440px;
     }

@@ -60,7 +60,7 @@ function SigninPopup({ onClose, isOpen, onPopupBackgroundClick, onLinkClick }) {
                 <span className='popup__input-error'>{errors.password}</span>
             </div>
 
-            <span className='popup__form-error' >Server Error Text</span>
+            <span className='popup__form-error' >Form Error Text</span>
 
         </PopupWithForm>
     )

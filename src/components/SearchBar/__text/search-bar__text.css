@@ -21,7 +21,7 @@
     color: #B6BCBF;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 500px) {
     .search-bar__search-text {
         margin: auto 16px auto 16px;
     }

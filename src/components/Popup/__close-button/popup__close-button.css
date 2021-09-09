@@ -21,7 +21,7 @@
     transition: opacity .15s ease-in-out;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
     .popup__close-button {
         background-size: 24px;
         width: 24px;

@@ -23,9 +23,9 @@ function Navbar({ theme, onSigninPopupOpen, isNavMenuOpen, onNavMenuOpen, onNavM
                         <li className='navbar__nav-item'>
                             <button className='navbar__user-state-button navbar__user-state-button_type_signin' onClick={onSigninPopupOpen}>Sign in</button>
                         </li>
-                        <li className='navbar__nav-item'>
+                        {/* <li className='navbar__nav-item'>
                             <button className='navbar__user-state-button navbar__user-state-button_type_name'>Username<div src={logoutIcon} className='navbar__logout-icon'></div></button>
-                        </li>
+                        </li> */}
                     </ul>
                     <button className={'navbar__menu-button' + (isNavMenuOpen ? ' navbar__menu-button_open' : '')} onClick={handleMenuButtonClick}></button>
                 </div>

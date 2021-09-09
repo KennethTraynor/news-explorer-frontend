@@ -10,7 +10,7 @@
     column-gap: 16px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .saved-news-cards__layout {
         margin: 32px 40px 32px 40px;
 
@@ -19,12 +19,18 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 700px) {
+    .saved-news-cards__layout {
+        grid-template-columns: 1fr 1fr;
+        row-gap: 10px;
+        column-gap: 10px;
+    }
+}
+
+@media screen and (max-width: 450px) {
     .saved-news-cards__layout {
         margin: 24px 16px 24px 16px;
 
         grid-template-columns: 1fr;
-        row-gap: 10px;
-        column-gap: 10px;
     }
 }

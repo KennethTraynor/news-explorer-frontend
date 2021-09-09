@@ -11,7 +11,7 @@
     line-height: 46px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .search-results__title  {
         margin-bottom: 32px;
 
@@ -20,7 +20,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 500px) {
     .search-results__title  {
         margin-bottom: 58px;
     }

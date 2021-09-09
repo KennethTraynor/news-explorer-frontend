@@ -15,7 +15,7 @@
     line-height: 30px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .card__title {
         font-size: 22px;
         line-height: 24px;
@@ -24,7 +24,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 500px) {
     .card__title {
         max-height: 48px;
         margin-bottom: 14px;

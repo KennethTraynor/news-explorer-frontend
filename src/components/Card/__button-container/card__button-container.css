@@ -12,14 +12,14 @@
     z-index: 1;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .card__button-container {
         right: 8px;
         top: 8px;
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 500px) {
     .card__button-container {
         right: 16px;
         top: 16px;

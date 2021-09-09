@@ -8,13 +8,13 @@
     color: #1A1B22;
 }
 
-@media screen and (max-width: 920px) {
+@media screen and (max-width: 1024px) {
     .footer__links {
         margin-right: 24px;
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
     .footer__links {
         flex-direction: column;
         margin: 0;

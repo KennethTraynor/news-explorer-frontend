@@ -2,7 +2,7 @@
     min-width: 112px;
 }
 
-@media screen and (max-width: 920px) {
+@media screen and (max-width: 1024px) {
     .footer__link_type_home {
         min-width: 88px;
     }

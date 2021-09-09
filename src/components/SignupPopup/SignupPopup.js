@@ -77,7 +77,7 @@ function SignupPopup({ onClose, isOpen, onPopupBackgroundClick, onLinkClick, han
                 <span className='popup__input-error'>{errors.username}</span>
             </div>
 
-            <span className='popup__form-error' >Server Error Text</span>
+            <span className='popup__form-error' >Form Error Text</span>
 
         </PopupWithForm>
     )
