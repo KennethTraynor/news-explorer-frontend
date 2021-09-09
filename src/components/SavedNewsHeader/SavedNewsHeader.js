@@ -5,7 +5,7 @@ import Navbar from '../Navbar/Navbar';
 function SavedNewsHeader({ isNavMenuOpen, onNavMenuOpen, onNavMenuClose, onNavMenuBackgroundClick, }) {
     return (
         <header className='saved-news-header'>
-            <Navbar theme='light' isNavMenuOpen={isNavMenuOpen} onNavMenuOpen={onNavMenuOpen} onNavMenuClose={onNavMenuClose} onNavMenuBackgroundClick={onNavMenuBackgroundClick} />
+            <Navbar loggedIn={true} theme='light' isNavMenuOpen={isNavMenuOpen} onNavMenuOpen={onNavMenuOpen} onNavMenuClose={onNavMenuClose} onNavMenuBackgroundClick={onNavMenuBackgroundClick} />
             <div className='saved-news-header__container'>
                 <h1 className='saved-news-header__title'>Saved articles</h1>
                 <p className='saved-news-header__total'>Username, you have 5 saved articles</p>

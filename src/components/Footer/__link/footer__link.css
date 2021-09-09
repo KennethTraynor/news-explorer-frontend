@@ -25,6 +25,5 @@
 @media screen and (max-width: 767px) {
     .footer__link {
         justify-content: left;
-        line-height: 48px;
     }
 }

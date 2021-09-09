@@ -18,7 +18,6 @@ function Main(
         isSigninPopupOpen,
         onSigninPopupOpen,
         isInfoPopupOpen,
-        onInfoPopupOpen,
         closeAllPopups,
         onPopupBackgroundClick,
         isNavMenuOpen,

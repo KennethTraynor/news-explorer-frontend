@@ -89,8 +89,6 @@ function App() {
                         onSigninPopupOpen={onSigninPopupOpen}
 
                         isInfoPopupOpen={isInfoPopupOpen}
-                        onInfoPopupOpen={onInfoPopupOpen}
-
 
                         closeAllPopups={closeAllPopups}
                         onPopupBackgroundClick={onPopupBackgroundClick}

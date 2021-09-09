@@ -1,26 +1,13 @@
 .about__author-image {
-    margin: auto 56px auto 0;
+    margin: 0;
     padding: 0;
 
     width: 100%;
-    max-width: 464px;
-    height: auto;
+    padding-bottom: 100%;
 
-    object-fit: cover;
-
-    border-radius: 100%;
-}
-
-@media screen and (max-width: 768px) {
-    .about__author-image {
-        margin-right: 32px;
-        max-width: 232px;
-    }
-}
-
-@media screen and (max-width: 767px) {
-    .about__author-image {
-        margin: 0 auto 24px auto;
-        max-width: 272px;
-    }
+    border-radius: 50%;
+    background-image: url(../../../images/author.jpg);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
