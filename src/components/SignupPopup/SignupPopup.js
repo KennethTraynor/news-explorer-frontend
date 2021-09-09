@@ -1,12 +1,79 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import './SignupPopup.css';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
+
+import { validateEmail, validateLength } from '../../utils/validation';
 
 function SignupPopup({ onClose, isOpen, onPopupBackgroundClick, onLinkClick, handleSignup }) {
 
+    const defaultErrorsState = { email: '', password: '', username: '' };
+    const [isFormInvalid, setFormInvalid] = React.useState(true);
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
+    const [username, setUsername] = React.useState('');
+    const [inputErrors, setInputErrors] = React.useState(defaultErrorsState);
+
+    useEffect(() => {
+        if (isOpen) {
+            setEmail('');
+            setPassword('');
+            setUsername('');
+            setInputErrors(defaultErrorsState);
+            setFormInvalid(true);
+        }
+    }, [isOpen])
+
+    useEffect(() => {
+        setFormInvalid(Object.keys(inputErrors).length > 0);
+    }, [inputErrors])
+
+    const removeError = (name) => {
+        const inputErrorsCopy = { ...inputErrors };
+        delete inputErrorsCopy[name];
+        setInputErrors(inputErrorsCopy);
+    }
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+
+        switch (name) {
+            case 'email':
+                setEmail(value);
+                if (validateEmail(value)) {
+                    removeError(name);
+                } else {
+                    setInputErrors({ ...inputErrors, [name]: 'Invalid Email' });
+                }
+                break;
+            case 'password':
+                setPassword(value);
+                if (value) {
+                    removeError(name);
+                } else {
+                    setInputErrors({ ...inputErrors, [name]: 'Invalid Password' });
+                }
+                break;
+            case 'username':
+                setUsername(value);
+                if (validateLength(value, 2, 30)) {
+                    removeError(name);
+                } else {
+                    setInputErrors({ ...inputErrors, [name]: 'Invalid Username' });
+                }
+                break;
+            default:
+                break;
+        }
+
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if (isFormInvalid) {
+            return;
+        }
+
         handleSignup();
     }
 
@@ -20,28 +87,55 @@ function SignupPopup({ onClose, isOpen, onPopupBackgroundClick, onLinkClick, han
             onLinkClick={onLinkClick}
             onClose={onClose}
             isOpen={isOpen}
+            isFormInvalid={isFormInvalid}
             onPopupBackgroundClick={onPopupBackgroundClick}
             handleSubmit={handleSubmit}
         >
             <div className='popup__field'>
                 <label className='popup__input-label'>Email</label>
-                <input id='signup-email' className='popup__input' placeholder='Enter email' type='email' name='email' required ></input>
-                <span id='signup-email-error' className='popup__input-error'>Invalid email</span>
+                <input
+                    className='popup__input'
+                    placeholder='Enter email'
+                    type='email'
+                    name='email'
+                    required
+                    value={email}
+                    onChange={handleChange}
+                />
+                <span className='popup__input-error'>{inputErrors.email}</span>
             </div>
 
             <div className='popup__field'>
                 <label className='popup__input-label'>Password</label>
-                <input id='signup-password' className='popup__input' placeholder='Enter password' type='password' name='password' required ></input>
-                <span id='signup-password-error' className='popup__input-error'>Invalid password</span>
+                <input
+                    className='popup__input'
+                    placeholder='Enter password'
+                    type='password'
+                    name='password'
+                    required
+                    value={password}
+                    onChange={handleChange}
+                />
+                <span className='popup__input-error'>{inputErrors.password}</span>
             </div>
 
             <div className='popup__field'>
                 <label className='popup__input-label'>Username</label>
-                <input id='signup-username' className='popup__input' placeholder='Enter your username' type='name' name='username' minLength='2' maxLength='30' required ></input>
-                <span id='signup-username-error' className='popup__input-error'>Invalid username</span>
+                <input
+                    className='popup__input'
+                    placeholder='Enter your username'
+                    type='text'
+                    name='username'
+                    minLength='2'
+                    maxLength='30'
+                    value={username}
+                    required
+                    onChange={handleChange}
+                />
+                <span className='popup__input-error'>{inputErrors.username}</span>
             </div>
 
-            <span id='signup-form-error' className='popup__form-error'>Signup Error Text</span>
+            <span className='popup__form-error' >Form Error Text</span>
 
         </PopupWithForm>
     )
