@@ -1,6 +1,6 @@
 
 
-# news-explorer-api
+# news-explorer-frontend
 
 Front-end for the News Explorer website.
 
