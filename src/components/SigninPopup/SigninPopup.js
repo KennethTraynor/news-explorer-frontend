@@ -2,69 +2,21 @@ import React, { useEffect } from 'react';
 
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
-import { validateEmail, validateLength } from '../../utils/validation';
+import useFormWithValidation from '../../utils/validation';
 
 function SigninPopup({ onClose, isOpen, onPopupBackgroundClick, onLinkClick }) {
 
-    const defaultErrorsState = { email: '', password: ''};
-    const [isFormInvalid, setFormInvalid] = React.useState(true);
-    const [email, setEmail] = React.useState('');
-    const [password, setPassword] = React.useState('');
-    const [inputErrors, setInputErrors] = React.useState(defaultErrorsState);
+    const initialValues = {email: '', password: ''};
+
+    const { values, errors, isValid, resetForm, handleChange } = useFormWithValidation(initialValues);
 
     useEffect(() => {
-        if (isOpen) {
-            setEmail('');
-            setPassword('');
-            setInputErrors(defaultErrorsState);
-            setFormInvalid(true);
-        }
-    }, [isOpen])
-
-    useEffect(() => {
-        setFormInvalid(Object.keys(inputErrors).length > 0);
-    }, [inputErrors])
-
-    const removeError = (name) => {
-        const inputErrorsCopy = { ...inputErrors };
-        delete inputErrorsCopy[name];
-        setInputErrors(inputErrorsCopy);
-    }
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-
-        switch (name) {
-            case 'email':
-                setEmail(value);
-                if (validateEmail(value)) {
-                    removeError(name);
-                } else {
-                    setInputErrors({ ...inputErrors, [name]: 'Invalid Email' });
-                }
-                break;
-            case 'password':
-                setPassword(value);
-                if (value) {
-                    removeError(name);
-                } else {
-                    setInputErrors({ ...inputErrors, [name]: 'Invalid Password' });
-                }
-                break;
-            default:
-                break;
-        }
-
-    };
+        resetForm(initialValues);
+    }, [isOpen]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        if (isFormInvalid) {
-            return;
-        }
-
-    }
+    };
 
     return (
         <PopupWithForm
@@ -76,7 +28,7 @@ function SigninPopup({ onClose, isOpen, onPopupBackgroundClick, onLinkClick }) {
             onLinkClick={onLinkClick}
             onClose={onClose}
             isOpen={isOpen}
-            isFormInvalid={isFormInvalid}
+            isFormInvalid={!isValid}
             onPopupBackgroundClick={onPopupBackgroundClick}
             handleSubmit={handleSubmit}
         >
@@ -88,10 +40,10 @@ function SigninPopup({ onClose, isOpen, onPopupBackgroundClick, onLinkClick }) {
                     type='email'
                     name='email'
                     required
-                    value={email}
+                    value={values.email}
                     onChange={handleChange}
                 />
-                <span className='popup__input-error'>{inputErrors.email}</span>
+                <span className='popup__input-error'>{errors.email}</span>
             </div>
 
             <div className='popup__field'>
@@ -102,13 +54,13 @@ function SigninPopup({ onClose, isOpen, onPopupBackgroundClick, onLinkClick }) {
                     type='password'
                     name='password'
                     required
-                    value={password}
+                    value={values.password}
                     onChange={handleChange}
                 />
-                <span className='popup__input-error'>{inputErrors.password}</span>
+                <span className='popup__input-error'>{errors.password}</span>
             </div>
 
-            <span className='popup__form-error' >Form Error Text</span>
+            <span className='popup__form-error' >Server Error Text</span>
 
         </PopupWithForm>
     )
