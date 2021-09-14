@@ -1,11 +1,15 @@
-.preloader__text {
+.search-error__sub-text {
     padding: 0;
-    margin: 0;
-    font-size: 18px;
+    margin: 0 40px 0 40px;
+
+    max-width: 300px;
+
     font-family: 'Roboto', Verdana, sans-serif;
     font-style: normal;
     font-weight: 400;
+    font-size: 18px;
     line-height: 24px;
     text-align: center;
+
     color: #B6BCBF;
 }

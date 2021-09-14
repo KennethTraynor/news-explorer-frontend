@@ -2,15 +2,15 @@ import React from "react";
 
 import './Card.css';
 
-function Card({ showKeyword, showDelete, showBookmark, keyword, date, title, description, source, image }) {
+function Card({ showKeyword, showDelete, showBookmark, keyword, date, title, description, source, image, url }) {
 
     return (
         <li className='card'>
             <div className='card__shadow'></div>
 
-            <div className='card__container'>
+            <a className='card__container' href={url} rel='noreferrer' target='_blank'>
                 <div className='card__upper-container'>
-                    <img src={image} className='card__image' alt='' />
+                    <img src={image} className='card__image' alt={title} />
 
                     {showBookmark &&
                         <div className='card__button-container'>
@@ -35,7 +35,7 @@ function Card({ showKeyword, showDelete, showBookmark, keyword, date, title, des
                     <p className='card__description'>{description}</p>
                     <p className='card__source'>{source}</p>
                 </div>
-            </div>
+            </a>
         </li>
     )
 }

@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
-import useFormWithValidation from '../../utils/validation';
+import { useFormWithValidation } from '../../utils/formControllers';
 
 function SignupPopup({ onClose, isOpen, onPopupBackgroundClick, onLinkClick, handleSignup }) {
 
-    const initialValues = {email: '', password: '', username: ''};
+    const initialValues = { email: '', password: '', username: '' };
 
     const { values, errors, isValid, resetForm, handleChange } = useFormWithValidation(initialValues);
 
