@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import './Card.css';
 
-function Card({ showKeyword, showDelete, showBookmark, article, keyword, date, title, description, source, image, url, loggedIn, onBookmarkArticle, onRemoveArticle, onSigninPopupOpen }) {
+function Card({ showKeyword, showDelete, showBookmark, article, keyword, date, title, description, source, image, url, loggedIn, onBookmarkArticle, onRemoveArticle, onSigninPopupOpen, savedArticles }) {
 
     const handleBookmarkClick = (e) => {
         e.preventDefault();
         e.stopPropagation();
         if (loggedIn) {
-            onBookmarkArticle(keyword, title, description=' ', date, source, url, image);
+            const article = savedArticles.find((article) => (article.link === url) && (article.keyword === keyword));
+
+            if (!article) {
+                onBookmarkArticle(keyword, title, description, date, source, url, image);
+            } else {
+                onRemoveArticle(article._id);
+            }
         } else {
             onSigninPopupOpen();
         }
@@ -32,7 +38,7 @@ function Card({ showKeyword, showDelete, showBookmark, article, keyword, date, t
 
                     {showBookmark &&
                         <div className='card__button-container'>
-                            <button className={'card__button card__button_type_bookmark'} onClick={handleBookmarkClick}></button>
+                            <button className={'card__button card__button_type_bookmark' + (savedArticles.some((article) => (article.link === url) && (article.keyword === keyword)) ? ' card__button_active' : '')} onClick={handleBookmarkClick}></button>
                             {!loggedIn && <div className='card__tooltip'>Sign in to save articles</div>}
                         </div>
                     }

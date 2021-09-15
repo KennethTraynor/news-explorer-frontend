@@ -1,7 +1,7 @@
 import './SearchResults.css';
 import Card from '../Card/Card';
 
-function SearchResults({ newsResults, maxDisplayedCards, onShowMore, loggedIn, onBookmarkArticle, onSigninPopupOpen }) {
+function SearchResults({ newsResults, maxDisplayedCards, onShowMore, loggedIn, onBookmarkArticle, onSigninPopupOpen, savedArticles, onRemoveArticle }) {
     return (
         <section className='search-results'>
             <div className='search-results__container'>
@@ -22,6 +22,8 @@ function SearchResults({ newsResults, maxDisplayedCards, onShowMore, loggedIn, o
                             loggedIn={loggedIn}
                             onBookmarkArticle={onBookmarkArticle}
                             onSigninPopupOpen={onSigninPopupOpen}
+                            onRemoveArticle={onRemoveArticle}
+                            savedArticles={savedArticles}
                         />)}
                 </ul>
                 {(maxDisplayedCards < newsResults.articles.length) && <button className='search-results__more-button' onClick={onShowMore}>Show more</button>}

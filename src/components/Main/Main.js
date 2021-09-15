@@ -37,12 +37,15 @@ function Main(
         onSearchNews,
         onShowMore,
         onBookmarkArticle,
+        onRemoveArticle,
         newsResults,
         isSearching,
         maxDisplayedCards,
         isNothingFoundVisible,
         isSearchErrorVisible,
         isSearchResultsVisible,
+
+        savedArticles,
     }) {
 
     return (
@@ -69,6 +72,8 @@ function Main(
                         loggedIn={loggedIn}
                         onBookmarkArticle={onBookmarkArticle}
                         onSigninPopupOpen={onSigninPopupOpen}
+                        onRemoveArticle={onRemoveArticle}
+                        savedArticles={savedArticles}
                     />
                 }
                 {isSearching && <Preloader />}

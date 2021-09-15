@@ -102,6 +102,7 @@ function App() {
     const onSignOut = () => {
         setLoggedIn(false);
         setCurrentUser({ email: '', name: '' });
+        setSavedArticles([]);
         localStorage.removeItem('token');
         history.push('/');
     }
@@ -214,34 +215,34 @@ function App() {
         setSearchErrorVisible(false);
         setSearchResultsVisible(false);
 
-        // Temp for testing
-        testNewsResults.searchKeyword = keyword;
-        setNewsResults(testNewsResults);
-        setSearchResultsVisible(true);
-        setSearching(false);
-        // Temp for testing
+        // // Temp for testing
+        // testNewsResults.searchKeyword = keyword;
+        // setNewsResults(testNewsResults);
+        // setSearchResultsVisible(true);
+        // setSearching(false);
+        // // Temp for testing
 
-        // newsApi.getNews({ keyword })
-        //     .then((res) => {
+        newsApi.getNews({ keyword })
+            .then((res) => {
 
-        //         if (res.status !== 'ok') {
-        //             setSearchErrorVisible(true);
-        //             return;
-        //         }
+                if (res.status !== 'ok') {
+                    setSearchErrorVisible(true);
+                    return;
+                }
 
-        //         if (res.totalResults === 0) {
-        //             setNothingFoundVisible(true);
-        //         } else {
-        //             res.searchKeyword = keyword;
-        //             setNewsResults(res);
-        //             setSearchResultsVisible(true);
-        //         }
-        //     })
-        //     .catch((err) => {
-        //         console.log(err);
-        //         setSearchErrorVisible(true)
-        //     })
-        //     .finally(() => setSearching(false));
+                if (res.totalResults === 0) {
+                    setNothingFoundVisible(true);
+                } else {
+                    res.searchKeyword = keyword;
+                    setNewsResults(res);
+                    setSearchResultsVisible(true);
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+                setSearchErrorVisible(true)
+            })
+            .finally(() => setSearching(false));
     }
 
     const onShowMore = () => {
@@ -277,12 +278,15 @@ function App() {
                             onSearchNews={onSearchNews}
                             onShowMore={onShowMore}
                             onBookmarkArticle={onBookmarkArticle}
+                            onRemoveArticle={onRemoveArticle}
                             isSearching={isSearching}
                             newsResults={newsResults}
                             maxDisplayedCards={maxDisplayedCards}
                             isNothingFoundVisible={isNothingFoundVisible}
                             isSearchErrorVisible={isSearchErrorVisible}
                             isSearchResultsVisible={isSearchResultsVisible}
+
+                            savedArticles={savedArticles}
                         />
                     </Route>
 
@@ -302,6 +306,7 @@ function App() {
 
                         sortArticles={sortArticles}
                         keywordList={keywordList}
+                        
                     />
 
                     <Route><Redirect to='/'></Redirect></Route>

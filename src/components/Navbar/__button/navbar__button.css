@@ -3,9 +3,9 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-
+    
     margin: 0;
-    padding: 12px auto 12px auto;
+    padding: 0;
     
     min-height: 48px;
     min-width: 176px;
@@ -48,8 +48,6 @@
     .navbar__button {
         min-height: 40px;
         min-width: 152px;
-        
-        padding: 8px auto 8px auto;
 
         font-size: 16px;
     }
@@ -59,8 +57,6 @@
     .navbar__button {
         min-height: 56px;
         width: 100%;
-
-        padding: 0;
 
         margin-top: auto;
         font-size: 18px;
