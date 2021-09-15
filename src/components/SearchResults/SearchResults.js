@@ -1,7 +1,7 @@
 import './SearchResults.css';
 import Card from '../Card/Card';
 
-function SearchResults({ newsResults, maxDisplayedCards, onShowMore }) {
+function SearchResults({ newsResults, maxDisplayedCards, onShowMore, loggedIn, onBookmarkArticle, onSigninPopupOpen }) {
     return (
         <section className='search-results'>
             <div className='search-results__container'>
@@ -11,13 +11,18 @@ function SearchResults({ newsResults, maxDisplayedCards, onShowMore }) {
                         <Card
                             key={index}
                             showBookmark={true}
-                            keyword={newsResults.searcKeyword}
-                            date={(new Date(article.publishedAt).toLocaleDateString('default', { month: 'long', day: 'numeric', year: 'numeric' }))}
+                            keyword={newsResults.searchKeyword}
+                            article={article}
+                            date={article.publishedAt}
                             description={article.description}
                             title={article.title}
                             source={article.source.name}
                             image={article.urlToImage}
-                            url={article.url} />)}
+                            url={article.url}
+                            loggedIn={loggedIn}
+                            onBookmarkArticle={onBookmarkArticle}
+                            onSigninPopupOpen={onSigninPopupOpen}
+                        />)}
                 </ul>
                 {(maxDisplayedCards < newsResults.articles.length) && <button className='search-results__more-button' onClick={onShowMore}>Show more</button>}
             </div>

@@ -1,11 +1,26 @@
 import React, { useCallback, useEffect } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './App.css';
 import Main from '../Main/Main';
 import SavedNews from '../SavedNews/SavedNews';
-import newsApi from '../../utils/NewsApi';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import * as newsApi from '../../utils/NewsApi';
+import * as mainApi from '../../utils/MainApi';
+import testNewsResults from '../../utils/testNewsResults.json';
+import { countKeywords } from '../../utils/utils';
 
 function App() {
+
+    const history = useHistory();
+
+    // User Related
+    const [loggedIn, setLoggedIn] = React.useState(false);
+    const [currentUser, setCurrentUser] = React.useState({ email: '', name: '' });
+
+    // Articles
+    const [savedArticles, setSavedArticles] = React.useState([]);
+    const [keywordList, setKeywordList] = React.useState([]);
 
     // Popups
     const [isSignupPopupOpen, setSignupPopupOpen] = React.useState(false);
@@ -23,17 +38,117 @@ function App() {
     const [isSearchResultsVisible, setSearchResultsVisible] = React.useState(false);
     const [maxDisplayedCards, setMaxDisplayedCards] = React.useState(3);
 
-    // Popups
+    useEffect(() => {
+        tokenCheck();
+    }, []);
 
+    // Update keywords List when articles list changes
+    useEffect(() => {
+        updateKeywords();
+    }, [savedArticles]);
+
+    // Registration and Authorization
+    const tokenCheck = () => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            mainApi.getContent(token)
+                .then((res) => {
+                    if (res) {
+                        setLoggedIn(true);
+                        closeAllPopups();
+                        setCurrentUser({ ...currentUser, email: res.email, name: res.name });
+                        getSavedArticles();
+                    }
+                })
+                .catch((err) => console.log(err));
+        }
+    }
+
+    const onRegister = (data, setFormErrorText, setSubbmitting) => {
+        mainApi.register(data.password, data.email, data.name)
+            .then((res) => {
+                if (!res) {
+                    setFormErrorText('An error has occured');
+                } else {
+                    closeAllPopups();
+                    onInfoPopupOpen();
+                }
+            })
+            .catch((err) => {
+                err.text()
+                    .then((error) => setFormErrorText(JSON.parse(error).message))
+                    .catch(() => setFormErrorText('An error has occcured'));
+            })
+            .finally(() => setSubbmitting(false));
+    }
+
+    const onLogin = (data, setFormErrorText, setSubbmitting) => {
+        mainApi.authorize(data.password, data.email)
+            .then((res) => {
+                if (!res) {
+                    setFormErrorText('An error has occured');
+                } else if (res.token) {
+                    tokenCheck();
+                }
+            })
+            .catch((err) => {
+                err.text()
+                    .then((error) => setFormErrorText(JSON.parse(error).message))
+                    .catch(() => setFormErrorText('An error has occcured'));
+            })
+            .finally(() => setSubbmitting(false));
+    }
+
+    const onSignOut = () => {
+        setLoggedIn(false);
+        setCurrentUser({ email: '', name: '' });
+        localStorage.removeItem('token');
+        history.push('/');
+    }
+
+    // Articles
+    const getSavedArticles = () => {
+        mainApi.getSavedArticles()
+            .then((articles) => {
+                setSavedArticles(articles);
+            })
+            .catch((err) => console.log(err));
+    }
+
+    const onBookmarkArticle = (keyword, title, text, date, source, link, image) => {
+        mainApi.saveArticle(keyword, title, text, date, source, link, image)
+            .then((article) => setSavedArticles([...savedArticles, article]))
+            .catch((err) => console.log(err));
+    }
+
+    const onRemoveArticle = (articleId) => {
+        mainApi.removeArticle(articleId)
+            .then((res) => setSavedArticles(savedArticles.filter(a => a._id !== res._id)))
+            .catch((err) => console.log(err));
+    }
+
+    // Article Sorting
+    const sortArticles = () => {
+        const keywordCounts = countKeywords((savedArticles.map((article) => article.keyword)));
+
+        const sortedSavedArticles = savedArticles.slice().sort((a, b) => keywordCounts[b.keyword] - keywordCounts[a.keyword]);
+
+        setSavedArticles(sortedSavedArticles);
+    }
+
+    const updateKeywords = () => {
+        const keywordCounts = countKeywords((savedArticles.map((article) => article.keyword)));
+
+        const newKeywords = Object.keys(keywordCounts).sort((a, b) => keywordCounts[b] - keywordCounts[a]);
+
+        setKeywordList(newKeywords);
+    }
+
+    // Popups
     const onSignupPopupOpen = () => {
         closeAllPopups();
         addPopupKeyListener();
         setSignupPopupOpen(true);
-    }
-
-    // Temporary for testing transition from Signup to Info popup
-    const handleSignup = () => {
-        onInfoPopupOpen();
     }
 
     const onSigninPopupOpen = () => {
@@ -64,7 +179,7 @@ function App() {
         document.addEventListener('keydown', onPopupKeyPress, false);
     }
 
-    const closeAllPopups = () => {
+    function closeAllPopups() {
         document.removeEventListener('keydown', onPopupKeyPress, false);
         setSignupPopupOpen(false);
         setSigninPopupOpen(false);
@@ -73,22 +188,18 @@ function App() {
 
     // Nav Menu
 
-    const onNavMenuOpen = () => {
-        setNavMenuOpen(true);
-    }
-
-    const onNavMenuClose = () => {
-        setNavMenuOpen(false);
+    const setNavMenuState = (state) => {
+        setNavMenuOpen(state);
     }
 
     const onNavMenuBackgroundClick = (e) => {
         if (e.target.classList.contains('navbar__menu-overlay')) {
-            onNavMenuClose();
+            setNavMenuState(false);
         }
     }
 
     // News Searching
-    const handleSearchNews = ({ keyword }) => {
+    const onSearchNews = ({ keyword }) => {
 
         if (!keyword.trim()) {
             return;
@@ -103,27 +214,34 @@ function App() {
         setSearchErrorVisible(false);
         setSearchResultsVisible(false);
 
-        newsApi.getNews({ keyword })
-            .then((res) => {
+        // Temp for testing
+        testNewsResults.searchKeyword = keyword;
+        setNewsResults(testNewsResults);
+        setSearchResultsVisible(true);
+        setSearching(false);
+        // Temp for testing
 
-                if (res.status !== 'ok') {
-                    setSearchErrorVisible(true);
-                    return;
-                }
+        // newsApi.getNews({ keyword })
+        //     .then((res) => {
 
-                if (res.totalResults === 0) {
-                    setNothingFoundVisible(true);
-                } else {
-                    res.searchKeyword = keyword;
-                    setNewsResults(res);
-                    setSearchResultsVisible(true);
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-                setSearchErrorVisible(true)
-            })
-            .finally(() => setSearching(false));
+        //         if (res.status !== 'ok') {
+        //             setSearchErrorVisible(true);
+        //             return;
+        //         }
+
+        //         if (res.totalResults === 0) {
+        //             setNothingFoundVisible(true);
+        //         } else {
+        //             res.searchKeyword = keyword;
+        //             setNewsResults(res);
+        //             setSearchResultsVisible(true);
+        //         }
+        //     })
+        //     .catch((err) => {
+        //         console.log(err);
+        //         setSearchErrorVisible(true)
+        //     })
+        //     .finally(() => setSearching(false));
     }
 
     const onShowMore = () => {
@@ -132,40 +250,64 @@ function App() {
 
     return (
         <div className='app'>
-            <Switch>
-                <Route exact path='/'>
-                    <Main
-                        isSignupPopupOpen={isSignupPopupOpen}
-                        onSignupPopupOpen={onSignupPopupOpen}
-                        handleSignup={handleSignup}
+            <CurrentUserContext.Provider value={ currentUser }>
+                <Switch>
+                    <Route exact path='/'>
+                        <Main
+                            loggedIn={loggedIn}
+                            onRegister={onRegister}
+                            onLogin={onLogin}
+                            onSignOut={onSignOut}
 
-                        isSigninPopupOpen={isSigninPopupOpen}
-                        onSigninPopupOpen={onSigninPopupOpen}
+                            isSignupPopupOpen={isSignupPopupOpen}
+                            onSignupPopupOpen={onSignupPopupOpen}
 
-                        isInfoPopupOpen={isInfoPopupOpen}
+                            isSigninPopupOpen={isSigninPopupOpen}
+                            onSigninPopupOpen={onSigninPopupOpen}
 
-                        closeAllPopups={closeAllPopups}
-                        onPopupBackgroundClick={onPopupBackgroundClick}
+                            isInfoPopupOpen={isInfoPopupOpen}
+
+                            closeAllPopups={closeAllPopups}
+                            onPopupBackgroundClick={onPopupBackgroundClick}
+
+                            isNavMenuOpen={isNavMenuOpen}
+                            setNavMenuState={setNavMenuState}
+                            onNavMenuBackgroundClick={onNavMenuBackgroundClick}
+
+                            onSearchNews={onSearchNews}
+                            onShowMore={onShowMore}
+                            onBookmarkArticle={onBookmarkArticle}
+                            isSearching={isSearching}
+                            newsResults={newsResults}
+                            maxDisplayedCards={maxDisplayedCards}
+                            isNothingFoundVisible={isNothingFoundVisible}
+                            isSearchErrorVisible={isSearchErrorVisible}
+                            isSearchResultsVisible={isSearchResultsVisible}
+                        />
+                    </Route>
+
+                    <ProtectedRoute path='/saved-news'
+                        component={SavedNews}
+
+                        loggedIn={loggedIn}
 
                         isNavMenuOpen={isNavMenuOpen}
-                        onNavMenuOpen={onNavMenuOpen}
-                        onNavMenuClose={onNavMenuClose}
+                        setNavMenuState={setNavMenuState}
                         onNavMenuBackgroundClick={onNavMenuBackgroundClick}
 
-                        isSearching={isSearching}
-                        handleSearchNews={handleSearchNews}
-                        newsResults={newsResults}
-                        isNothingFoundVisible={isNothingFoundVisible}
-                        maxDisplayedCards={maxDisplayedCards}
-                        onShowMore={onShowMore}
-                        isSearchErrorVisible={isSearchErrorVisible}
-                        isSearchResultsVisible={isSearchResultsVisible}
+                        onSignOut={onSignOut}
+
+                        savedArticles={savedArticles}
+                        onRemoveArticle={onRemoveArticle}
+
+                        sortArticles={sortArticles}
+                        keywordList={keywordList}
                     />
-                </Route>
-                <Route path='/saved-news'><SavedNews isNavMenuOpen={isNavMenuOpen} onNavMenuOpen={onNavMenuOpen} onNavMenuClose={onNavMenuClose} onNavMenuBackgroundClick={onNavMenuBackgroundClick} /></Route>
-                <Route><Redirect to='/'></Redirect></Route>
-            </Switch>
-        </div>
+
+                    <Route><Redirect to='/'></Redirect></Route>
+                </Switch>
+            </CurrentUserContext.Provider>
+        </div >
     )
 }
 

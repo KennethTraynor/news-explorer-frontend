@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useForm } from '../../utils/formControllers';
 import './SearchBar.css';
 
-function SearchBar({ handleSearchNews }) {
+function SearchBar({ onSearchNews }) {
 
     const initialValues = { keyword: '' };
 
@@ -14,7 +14,7 @@ function SearchBar({ handleSearchNews }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleSearchNews({ keyword: values.keyword });
+        onSearchNews({ keyword: values.keyword });
     };
 
 

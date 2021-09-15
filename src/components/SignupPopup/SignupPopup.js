@@ -4,11 +4,12 @@ import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
 import { useFormWithValidation } from '../../utils/formControllers';
 
-function SignupPopup({ onClose, isOpen, onPopupBackgroundClick, onLinkClick, handleSignup }) {
+function SignupPopup({ onClose, isOpen, onPopupBackgroundClick, onLinkClick, onRegister }) {
 
     const initialValues = { email: '', password: '', username: '' };
+    const [isSubmitting, setSubmitting] = React.useState(false);
 
-    const { values, errors, isValid, resetForm, handleChange } = useFormWithValidation(initialValues);
+    const { values, errors, isValid, resetForm, handleChange, setFormErrorText, formErrorText } = useFormWithValidation(initialValues);
 
     useEffect(() => {
         resetForm(initialValues);
@@ -16,7 +17,8 @@ function SignupPopup({ onClose, isOpen, onPopupBackgroundClick, onLinkClick, han
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleSignup();
+        setSubmitting(true);
+        onRegister({ password: values.password, email: values.email, name: values.username }, setFormErrorText, setSubmitting);
     };
 
     return (
@@ -43,6 +45,7 @@ function SignupPopup({ onClose, isOpen, onPopupBackgroundClick, onLinkClick, han
                     required
                     value={values.email}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                 />
                 <span className='popup__input-error'>{errors.email}</span>
             </div>
@@ -57,6 +60,7 @@ function SignupPopup({ onClose, isOpen, onPopupBackgroundClick, onLinkClick, han
                     required
                     value={values.password}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                 />
                 <span className='popup__input-error'>{errors.password}</span>
             </div>
@@ -73,11 +77,12 @@ function SignupPopup({ onClose, isOpen, onPopupBackgroundClick, onLinkClick, han
                     maxLength='30'
                     value={values.username}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                 />
                 <span className='popup__input-error'>{errors.username}</span>
             </div>
 
-            <span className='popup__form-error' >Form Error Text</span>
+            <span className='popup__form-error' >{formErrorText}</span>
 
         </PopupWithForm>
     )

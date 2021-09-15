@@ -1,32 +1,22 @@
-class NewsApi {
-    constructor({ baseUrl, apiKey }) {
-        this._baseUrl = baseUrl;
-        this._apiKey = apiKey;
-        this._pageSize = 100;
-    }
+const baseUrl = 'https://newsapi.org/v2';
+const apiKey = '0c20ad1a914b4c689fff7881aac74be8';
+const pageSize = 100;
 
-    getNews({ keyword }) {
-        const toDate = new Date();
-        const fromDate = new Date();
-        
-        fromDate.setDate(fromDate.getDate() - 5);
+export const getNews = ({ keyword }) => {
+    const toDate = new Date();
+    const fromDate = new Date();
 
-        return fetch(`${this._baseUrl}/everything?q=${keyword}&from=${fromDate}&to=${toDate}&pageSize=${this._pageSize}=&apiKey=${this._apiKey}`)
+    fromDate.setDate(fromDate.getDate() - 5);
+
+    return fetch(`${baseUrl}/everything?q=${keyword}&from=${fromDate}&to=${toDate}&pageSize=${pageSize}=&apiKey=${apiKey}`)
         .then((res) => {
-            return this._handleResponse(res);
+            return handleResponse(res);
         })
-    }
-
-    _handleResponse(res) {
-        if (res.ok) {
-            return res.json();
-        }
-        return Promise.reject(res.status);
-    }
-
-
 }
 
-const newsApi = new NewsApi({ baseUrl: 'https://newsapi.org/v2', apiKey: '0c20ad1a914b4c689fff7881aac74be8' });
-
-export default newsApi;
+const handleResponse = (res) => {
+    if (res.ok) {
+        return res.json();
+    }
+    return Promise.reject(res.status);
+}

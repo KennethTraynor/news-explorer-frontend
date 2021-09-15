@@ -10,30 +10,41 @@ import SignupPopup from '../SignupPopup/SignupPopup';
 import SigninPopup from '../SigninPopup/SigninPopup';
 import InfoPopup from '../InfoPopup/InfoPopup';
 import SearchError from '../SearchError/SearchError';
+import React from 'react';
 
 function Main(
     {
+        loggedIn,
+        onRegister,
+        onLogin,
+        onSignOut,
+
         isSignupPopupOpen,
         onSignupPopupOpen,
-        handleSignup,
+
         isSigninPopupOpen,
         onSigninPopupOpen,
+
         isInfoPopupOpen,
+
         closeAllPopups,
         onPopupBackgroundClick,
+
         isNavMenuOpen,
-        onNavMenuOpen,
-        onNavMenuClose,
+        setNavMenuState,
         onNavMenuBackgroundClick,
-        handleSearchNews,
+
+        onSearchNews,
+        onShowMore,
+        onBookmarkArticle,
         newsResults,
         isSearching,
-        isNothingFoundVisible,
         maxDisplayedCards,
-        onShowMore,
+        isNothingFoundVisible,
         isSearchErrorVisible,
         isSearchResultsVisible,
     }) {
+
     return (
         <main className='main'>
             <div className='main__container'>
@@ -41,11 +52,12 @@ function Main(
                     onSigninPopupOpen={onSigninPopupOpen}
 
                     isNavMenuOpen={isNavMenuOpen}
-                    onNavMenuOpen={onNavMenuOpen}
-                    onNavMenuClose={onNavMenuClose}
+                    setNavMenuState={setNavMenuState}
                     onNavMenuBackgroundClick={onNavMenuBackgroundClick}
 
-                    handleSearchNews={handleSearchNews}
+                    onSearchNews={onSearchNews}
+                    loggedIn={loggedIn}
+                    onSignOut={onSignOut}
                 />
 
                 {
@@ -54,6 +66,9 @@ function Main(
                         newsResults={newsResults}
                         maxDisplayedCards={maxDisplayedCards}
                         onShowMore={onShowMore}
+                        loggedIn={loggedIn}
+                        onBookmarkArticle={onBookmarkArticle}
+                        onSigninPopupOpen={onSigninPopupOpen}
                     />
                 }
                 {isSearching && <Preloader />}
@@ -70,13 +85,14 @@ function Main(
                     isOpen={isSignupPopupOpen}
                     onPopupBackgroundClick={onPopupBackgroundClick}
                     onLinkClick={onSigninPopupOpen}
-                    handleSignup={handleSignup}
+                    onRegister={onRegister}
                 />
                 <SigninPopup
                     onClose={closeAllPopups}
                     isOpen={isSigninPopupOpen}
                     onPopupBackgroundClick={onPopupBackgroundClick}
                     onLinkClick={onSignupPopupOpen}
+                    onLogin={onLogin}
                 />
                 <InfoPopup
                     onClose={closeAllPopups}

@@ -8,6 +8,7 @@
 @import url(__button/_type/card__button_type_delete.css);
 @import url(__tooltip/card__tooltip.css);
 @import url(__keyword/card__keyword.css);
+@import url(__keyword-text/card__keyword-text.css);
 @import url(__lower-container/card__lower-container.css);
 @import url(__date/card__date.css);
 @import url(__title/card__title.css);

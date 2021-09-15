@@ -2,7 +2,25 @@ import React from "react";
 
 import './Card.css';
 
-function Card({ showKeyword, showDelete, showBookmark, keyword, date, title, description, source, image, url }) {
+function Card({ showKeyword, showDelete, showBookmark, article, keyword, date, title, description, source, image, url, loggedIn, onBookmarkArticle, onRemoveArticle, onSigninPopupOpen }) {
+
+    const handleBookmarkClick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (loggedIn) {
+            onBookmarkArticle(keyword, title, description=' ', date, source, url, image);
+        } else {
+            onSigninPopupOpen();
+        }
+    }
+
+    const handleDeleteClick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (loggedIn) {
+            onRemoveArticle(article._id);
+        }
+    }
 
     return (
         <li className='card'>
@@ -14,23 +32,23 @@ function Card({ showKeyword, showDelete, showBookmark, keyword, date, title, des
 
                     {showBookmark &&
                         <div className='card__button-container'>
-                            <button className='card__button card__button_type_bookmark' ></button>
-                            <div className='card__tooltip'>Sign in to save articles</div>
+                            <button className={'card__button card__button_type_bookmark'} onClick={handleBookmarkClick}></button>
+                            {!loggedIn && <div className='card__tooltip'>Sign in to save articles</div>}
                         </div>
                     }
 
                     {showDelete &&
                         <div className='card__button-container'>
-                            <button className='card__button card__button_type_delete'></button>
+                            <button className='card__button card__button_type_delete' onClick={handleDeleteClick}></button>
                             <div className='card__tooltip'>Remove from saved</div>
                         </div>
                     }
 
-                    {showKeyword && <div className='card__keyword'>{keyword}</div>}
+                    {showKeyword && <div className='card__keyword'><span className='card__keyword-text'>{keyword}</span></div>}
 
                 </div>
                 <div className='card__lower-container'>
-                    <p className='card__date'>{date}</p>
+                    <p className='card__date'>{(new Date(date).toLocaleDateString('default', { month: 'long', day: 'numeric', year: 'numeric' }))}</p>
                     <h2 className='card__title'>{title}</h2>
                     <p className='card__description'>{description}</p>
                     <p className='card__source'>{source}</p>
