@@ -10,7 +10,7 @@ import SignupPopup from '../SignupPopup/SignupPopup';
 import SigninPopup from '../SigninPopup/SigninPopup';
 import InfoPopup from '../InfoPopup/InfoPopup';
 import SearchError from '../SearchError/SearchError';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 function Main(
     {
@@ -38,6 +38,7 @@ function Main(
         onShowMore,
         onBookmarkArticle,
         onRemoveArticle,
+        renderPreviousResults,
         newsResults,
         isSearching,
         maxDisplayedCards,
@@ -47,6 +48,11 @@ function Main(
 
         savedArticles,
     }) {
+
+    // Renders last successful search results if it exists in local storage
+    useEffect(() => {
+        renderPreviousResults();
+    }, []);
 
     return (
         <main className='main'>

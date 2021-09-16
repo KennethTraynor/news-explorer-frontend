@@ -7,11 +7,11 @@ import SavedNews from '../SavedNews/SavedNews';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import * as newsApi from '../../utils/NewsApi';
 import * as mainApi from '../../utils/MainApi';
-import testNewsResults from '../../utils/testNewsResults.json';
 import { countKeywords } from '../../utils/utils';
 
 function App() {
 
+    // History
     const history = useHistory();
 
     // User Related
@@ -32,22 +32,23 @@ function App() {
 
     // News Searching
     const [isSearching, setSearching] = React.useState(false);
-    const [newsResults, setNewsResults] = React.useState([]);
+    const [newsResults, setNewsResults] = React.useState({});
     const [isNothingFoundVisible, setNothingFoundVisible] = React.useState(false);
     const [isSearchErrorVisible, setSearchErrorVisible] = React.useState(false);
     const [isSearchResultsVisible, setSearchResultsVisible] = React.useState(false);
     const [maxDisplayedCards, setMaxDisplayedCards] = React.useState(3);
 
+    // On App loaded
     useEffect(() => {
         tokenCheck();
     }, []);
 
-    // Update keywords List when articles list changes
+    // On saved articles change
     useEffect(() => {
         updateKeywords();
     }, [savedArticles]);
 
-    // Registration and Authorization
+    //--- Registration and Authorization ---// 
     const tokenCheck = () => {
         const token = localStorage.getItem('token');
         if (token) {
@@ -82,7 +83,7 @@ function App() {
             .finally(() => setSubbmitting(false));
     }
 
-    const onLogin = (data, setFormErrorText, setSubbmitting) => {
+    const onLogin = (data, setFormErrorText, setSubmitting) => {
         mainApi.authorize(data.password, data.email)
             .then((res) => {
                 if (!res) {
@@ -96,7 +97,7 @@ function App() {
                     .then((error) => setFormErrorText(JSON.parse(error).message))
                     .catch(() => setFormErrorText('An error has occcured'));
             })
-            .finally(() => setSubbmitting(false));
+            .finally(() => setSubmitting(false));
     }
 
     const onSignOut = () => {
@@ -107,7 +108,7 @@ function App() {
         history.push('/');
     }
 
-    // Articles
+    //--- Articles ---// 
     const getSavedArticles = () => {
         mainApi.getSavedArticles()
             .then((articles) => {
@@ -128,24 +129,28 @@ function App() {
             .catch((err) => console.log(err));
     }
 
-    // Article Sorting
+    //--- Saved Article Sorting ---// 
     const sortArticles = () => {
+        // Object with the totals of each keyword
         const keywordCounts = countKeywords((savedArticles.map((article) => article.keyword)));
 
+        // New sorted articles array using keyword totals
         const sortedSavedArticles = savedArticles.slice().sort((a, b) => keywordCounts[b.keyword] - keywordCounts[a.keyword]);
 
         setSavedArticles(sortedSavedArticles);
     }
 
     const updateKeywords = () => {
+        // Object with the totals of each keyword
         const keywordCounts = countKeywords((savedArticles.map((article) => article.keyword)));
 
+        // New sorted keyword array using keyword totals
         const newKeywords = Object.keys(keywordCounts).sort((a, b) => keywordCounts[b] - keywordCounts[a]);
 
         setKeywordList(newKeywords);
     }
 
-    // Popups
+    //--- Popups ---// 
     const onSignupPopupOpen = () => {
         closeAllPopups();
         addPopupKeyListener();
@@ -187,8 +192,7 @@ function App() {
         setInfoPopupOpen(false);
     }
 
-    // Nav Menu
-
+    //--- Nav Menu ---// 
     const setNavMenuState = (state) => {
         setNavMenuOpen(state);
     }
@@ -199,15 +203,18 @@ function App() {
         }
     }
 
-    // News Searching
+    //--- News Searching ---// 
     const onSearchNews = ({ keyword }) => {
 
+        // Checks if keyword is valid (trims white space)
         if (!keyword.trim()) {
             return;
         }
 
+        // Displays preloader
         setSearching(true);
 
+        // Resets search values
         setNewsResults([]);
         setMaxDisplayedCards(3);
         setNothingFoundVisible(false);
@@ -215,26 +222,28 @@ function App() {
         setSearchErrorVisible(false);
         setSearchResultsVisible(false);
 
-        // // Temp for testing
-        // testNewsResults.searchKeyword = keyword;
-        // setNewsResults(testNewsResults);
-        // setSearchResultsVisible(true);
-        // setSearching(false);
-        // // Temp for testing
-
+        // Makes api request using keyword
         newsApi.getNews({ keyword })
             .then((res) => {
 
+                // Display if an error occurs
                 if (res.status !== 'ok') {
                     setSearchErrorVisible(true);
                     return;
                 }
 
+                // Display if no results
                 if (res.totalResults === 0) {
                     setNothingFoundVisible(true);
                 } else {
+                    // Update news results and attach keyword to the object
                     res.searchKeyword = keyword;
                     setNewsResults(res);
+
+                    // Store previous successful results
+                    localStorage.setItem('previous-results', JSON.stringify(res));
+
+                    // Display search results
                     setSearchResultsVisible(true);
                 }
             })
@@ -245,13 +254,23 @@ function App() {
             .finally(() => setSearching(false));
     }
 
+    // Renders previous results if there are any
+    const renderPreviousResults = () => {
+        if (Object.keys(newsResults).length === 0) {
+            if (localStorage.getItem('previous-results')) {
+                setNewsResults(JSON.parse(localStorage.getItem('previous-results')));
+                setSearchResultsVisible(true);
+            }
+        }
+    }
+
     const onShowMore = () => {
         setMaxDisplayedCards(maxDisplayedCards + 3);
     }
 
     return (
         <div className='app'>
-            <CurrentUserContext.Provider value={ currentUser }>
+            <CurrentUserContext.Provider value={currentUser}>
                 <Switch>
                     <Route exact path='/'>
                         <Main
@@ -279,6 +298,7 @@ function App() {
                             onShowMore={onShowMore}
                             onBookmarkArticle={onBookmarkArticle}
                             onRemoveArticle={onRemoveArticle}
+                            renderPreviousResults={renderPreviousResults}
                             isSearching={isSearching}
                             newsResults={newsResults}
                             maxDisplayedCards={maxDisplayedCards}
@@ -306,7 +326,7 @@ function App() {
 
                         sortArticles={sortArticles}
                         keywordList={keywordList}
-                        
+
                     />
 
                     <Route><Redirect to='/'></Redirect></Route>
