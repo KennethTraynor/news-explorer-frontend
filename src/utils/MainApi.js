@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000';
+const baseUrl = 'https://api.ktraynornews.students.nomoreparties.site';
 
 export const register = (password, email, name) => {
     return fetch(`${baseUrl}/signup`, {
