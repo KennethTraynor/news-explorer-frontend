@@ -1,15 +1,12 @@
-.navbar__nav-item {
+.navbar__menu-item {
     display: flex;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
 
     margin: 0;
     padding: 0;
 
     list-style: none;
 
-    flex-shrink: 0;
-
-    height: 100%;
     min-width: 0;
 }

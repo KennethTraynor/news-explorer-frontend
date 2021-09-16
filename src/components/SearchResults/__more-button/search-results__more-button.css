@@ -22,13 +22,13 @@
     
     border: none;
     border-radius: 80px;
-    transition: opacity .1s ease-in-out;
+    transition: background-color .1s ease-in-out;
 
     cursor: pointer;
 }
 
 .search-results__more-button:hover {
-    opacity: .9;
+    background-color: rgba(255, 255, 255, .9);
 }
 
 @media screen and (max-width: 1024px) {

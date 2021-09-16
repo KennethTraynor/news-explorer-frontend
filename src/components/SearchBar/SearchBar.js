@@ -4,17 +4,8 @@ import './SearchBar.css';
 
 function SearchBar({ onSearchNews }) {
 
-    // Retreives previous successful search keyword
-    const getPreviousKeyword = () => {
-        if (localStorage.getItem('previous-results')) {
-            return JSON.parse(localStorage.getItem('previous-results')).searchKeyword;
-        }
-    }
+    const initialValues = { keyword: '' };
 
-    // Sets search form initial values
-    const initialValues = { keyword: getPreviousKeyword() || '' };
-
-    // Initialize form
     const { values, handleChange } = useForm(initialValues);
     
     const handleSubmit = (e) => {

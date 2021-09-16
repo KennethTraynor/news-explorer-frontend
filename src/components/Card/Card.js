@@ -1,5 +1,3 @@
-import React, { useEffect } from "react";
-
 import './Card.css';
 
 function Card({ showKeyword, showDelete, showBookmark, article, keyword, date, title, description, source, image, url, loggedIn, onBookmarkArticle, onRemoveArticle, onSigninPopupOpen, savedArticles }) {

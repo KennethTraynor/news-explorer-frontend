@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './App.css';
@@ -8,6 +8,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import * as newsApi from '../../utils/NewsApi';
 import * as mainApi from '../../utils/MainApi';
 import { countKeywords } from '../../utils/utils';
+import { DEFAULT_CARD_AMOUNT, SHOW_MORE_AMOUNT } from '../../utils/constants';
 
 function App() {
 
@@ -36,11 +37,12 @@ function App() {
     const [isNothingFoundVisible, setNothingFoundVisible] = React.useState(false);
     const [isSearchErrorVisible, setSearchErrorVisible] = React.useState(false);
     const [isSearchResultsVisible, setSearchResultsVisible] = React.useState(false);
-    const [maxDisplayedCards, setMaxDisplayedCards] = React.useState(3);
+    const [maxDisplayedCards, setMaxDisplayedCards] = React.useState(DEFAULT_CARD_AMOUNT);
 
-    // On App loaded
+    // On App loaded, check token, check local storage for previous search results
     useEffect(() => {
         tokenCheck();
+        renderPreviousResults();
     }, []);
 
     // On saved articles change
@@ -206,17 +208,16 @@ function App() {
     //--- News Searching ---// 
     const onSearchNews = ({ keyword }) => {
 
-        // Checks if keyword is valid (trims white space)
+        // Checks if keyword is valid
         if (!keyword.trim()) {
             return;
         }
 
-        // Displays preloader
+        // Display preloader and reset values
         setSearching(true);
 
-        // Resets search values
         setNewsResults([]);
-        setMaxDisplayedCards(3);
+        setMaxDisplayedCards(DEFAULT_CARD_AMOUNT);
         setNothingFoundVisible(false);
         setSearchErrorVisible(false)
         setSearchErrorVisible(false);
@@ -236,14 +237,11 @@ function App() {
                 if (res.totalResults === 0) {
                     setNothingFoundVisible(true);
                 } else {
-                    // Update news results and attach keyword to the object
+                    // Update news results and attach keyword to the object, store results in local storage
                     res.searchKeyword = keyword;
                     setNewsResults(res);
 
-                    // Store previous successful results
                     localStorage.setItem('previous-results', JSON.stringify(res));
-
-                    // Display search results
                     setSearchResultsVisible(true);
                 }
             })
@@ -265,7 +263,7 @@ function App() {
     }
 
     const onShowMore = () => {
-        setMaxDisplayedCards(maxDisplayedCards + 3);
+        setMaxDisplayedCards(maxDisplayedCards + SHOW_MORE_AMOUNT);
     }
 
     return (

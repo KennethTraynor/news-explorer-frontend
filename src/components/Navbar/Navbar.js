@@ -39,7 +39,7 @@ function Navbar({ theme, onSigninPopupOpen, isNavMenuOpen, setNavMenuState, onNa
 
                         {
                             !loggedIn &&
-                            <li className='navbar__nav-item'>
+                            <li className='navbar__nav-item navbar__nav-item_shrink'>
                                 <button className='navbar__button navbar__button_type_signin' onClick={onSigninPopupOpen}>
                                     <span className='navbar__button-text'>Sign in</span>
                                 </button>
@@ -48,7 +48,7 @@ function Navbar({ theme, onSigninPopupOpen, isNavMenuOpen, setNavMenuState, onNa
 
                         {
                             loggedIn &&
-                            <li className='navbar__nav-item'>
+                            <li className='navbar__nav-item navbar__nav-item_shrink'>
                                 <button className='navbar__button navbar__button_type_name' onClick={onSignOut}>
                                     <span className='navbar__button-text navbar__button-text_type_name'>{currentUser.name}</span>
                                     <div src={logoutIcon} className='navbar__logout-icon' />
@@ -64,25 +64,25 @@ function Navbar({ theme, onSigninPopupOpen, isNavMenuOpen, setNavMenuState, onNa
                 <div className='navbar__menu-container'>
                     <ul className='navbar__menu-list'>
 
-                        <li className='navbar__nav-item'>
-                        <div className='navbar__menu-links'>
-                            <NavLink exact to='/' className='navbar__link navbar__link_type_home'>Home</NavLink>
-                            {loggedIn && <NavLink to='/saved-news' className='navbar__link navbar__link_type_articles'>Saved articles</NavLink>}
-                        </div>
-                    </li>
-
-                    {
-                        !loggedIn &&
-                        <li className='navbar__nav-item'>
-                            <button className='navbar__button navbar__button_type_signin' onClick={onSigninPopupOpen}>
-                                <span className='navbar__button-text'>Sign in</span>
-                            </button>
+                        <li className='navbar__menu-item'>
+                            <div className='navbar__menu-links'>
+                                <NavLink exact to='/' className='navbar__link navbar__link_type_home'>Home</NavLink>
+                                {loggedIn && <NavLink to='/saved-news' className='navbar__link navbar__link_type_articles'>Saved articles</NavLink>}
+                            </div>
                         </li>
-                    }
+
+                        {
+                            !loggedIn &&
+                            <li className='navbar__menu-item'>
+                                <button className='navbar__button navbar__button_type_signin' onClick={onSigninPopupOpen}>
+                                    <span className='navbar__button-text'>Sign in</span>
+                                </button>
+                            </li>
+                        }
 
                         {
                             loggedIn &&
-                            <li className='navbar__nav-item'>
+                            <li className='navbar__menu-item'>
                                 <button className='navbar__button navbar__button_type_name' onClick={onSignOut}>
                                     <span className='navbar__button-text navbar__button-text_type_name'>{currentUser.name}</span>
                                     <div src={logoutIcon} className='navbar__logout-icon' />
