@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './App.css';
@@ -310,7 +310,7 @@ function App() {
 
                     <ProtectedRoute path='/saved-news'
                         component={SavedNews}
-
+                        
                         loggedIn={loggedIn}
 
                         isNavMenuOpen={isNavMenuOpen}

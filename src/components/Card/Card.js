@@ -5,14 +5,17 @@ function Card({ showKeyword, showDelete, showBookmark, article, keyword, date, t
     const handleBookmarkClick = (e) => {
         e.preventDefault();
         e.stopPropagation();
+        
         if (loggedIn) {
-            const article = savedArticles.find((article) => (article.link === url) && (article.keyword === keyword));
+            // Checks if article with URL is already saved
+            const article = savedArticles.find((article) => (article.link === url));
 
             if (!article) {
                 onBookmarkArticle(keyword, title, description, date, source, url, image);
             } else {
                 onRemoveArticle(article._id);
             }
+
         } else {
             onSigninPopupOpen();
         }
