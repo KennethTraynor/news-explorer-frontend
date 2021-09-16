@@ -50,4 +50,4 @@ Front-end for the News Explorer website.
 
 ## Links
 
-* No links yet!
+* https://www.ktraynornews.students.nomoreparties.site/
