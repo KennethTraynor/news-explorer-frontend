@@ -1,0 +1,10 @@
+.search-error__graphic {
+    width: 82.5px;
+    height: 82.5px;
+
+    background-image: url(../../../images/not-found.svg);
+    background-repeat: no-repeat;
+
+    margin: 0 0 24px 0;
+    padding: 0;
+}

@@ -1,0 +1,19 @@
+@import url(__graphic/search-error__graphic.css);
+@import url(__main-text/search-error__main-text.css);
+@import url(__sub-text/search-error__sub-text.css);
+
+.search-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 374px;
+    max-width: 1440px;
+    width: 100%;
+    
+    margin: 0 auto 0 auto;
+    padding: 0;
+    
+    background-color: #F5F6F7;
+}

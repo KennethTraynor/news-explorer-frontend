@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
-import useFormWithValidation from '../../utils/validation';
+import { useFormWithValidation } from '../../utils/formControllers';
 
-function SigninPopup({ onClose, isOpen, onPopupBackgroundClick, onLinkClick }) {
+function SigninPopup({ onClose, isOpen, onPopupBackgroundClick, onLinkClick, onLogin }) {
 
-    const initialValues = {email: '', password: ''};
+    const initialValues = { email: '', password: '' };
+    const [isSubmitting, setSubmitting] = React.useState(false);
 
-    const { values, errors, isValid, resetForm, handleChange } = useFormWithValidation(initialValues);
+    const { values, errors, isValid, resetForm, handleChange, setFormErrorText, formErrorText } = useFormWithValidation(initialValues);
 
     useEffect(() => {
         resetForm(initialValues);
@@ -16,6 +17,8 @@ function SigninPopup({ onClose, isOpen, onPopupBackgroundClick, onLinkClick }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setSubmitting(true);
+        onLogin({ password: values.password, email: values.email }, setFormErrorText, setSubmitting);
     };
 
     return (
@@ -42,6 +45,7 @@ function SigninPopup({ onClose, isOpen, onPopupBackgroundClick, onLinkClick }) {
                     required
                     value={values.email}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                 />
                 <span className='popup__input-error'>{errors.email}</span>
             </div>
@@ -56,11 +60,12 @@ function SigninPopup({ onClose, isOpen, onPopupBackgroundClick, onLinkClick }) {
                     required
                     value={values.password}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                 />
                 <span className='popup__input-error'>{errors.password}</span>
             </div>
 
-            <span className='popup__form-error' >Form Error Text</span>
+            <span className='popup__form-error' >{formErrorText}</span>
 
         </PopupWithForm>
     )

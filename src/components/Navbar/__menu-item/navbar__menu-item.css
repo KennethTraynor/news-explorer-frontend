@@ -1,0 +1,12 @@
+.navbar__menu-item {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    min-width: 0;
+}

@@ -3,22 +3,28 @@
 @import url(__title/navbar__title.css);
 @import url(__nav-items/navbar__nav-items.css);
 @import url(__nav-item/navbar__nav-item.css);
+@import url(__nav-item/_shrink/navbar__nav-item_shrink.css);
 @import url(__link/navbar__link.css);
 @import url(__link/_active/navbar__link_active.css);
 @import url(__link/_type/navbar__link_type_articles.css);
-@import url(__user-state-button/navbar__user-state-button.css);
-@import url(__user-state-button/_type/navbar__user-state-button_type_name.css);
+@import url(__button/navbar__button.css);
+@import url(__button/_type/navbar__button_type_name.css);
+@import url(__button-text/navbar__button-text.css);
+@import url(__button-text/_type/navbar__button-text_type_name.css);
 @import url(__logout-icon/navbar__logout-icon.css);
 @import url(__menu-button/navbar__menu-button.css);
 @import url(__menu/navbar__menu.css);
 @import url(__menu-button/_open/navbar__menu-button_open.css);
 @import url(__menu-overlay/navbar__menu-overlay.css);
 @import url(__menu-container/navbar__menu-container.css);
+@import url(__menu-list/navbar__menu-list.css);
+@import url(__menu-item/navbar__menu-item.css);
 @import url(__menu-links/navbar__menu-links.css);
 @import url(__menu/_open/navbar__menu_open.css);
 
 .navbar {
     display: flex;
+    flex-direction: row;
     margin: 0 auto 0 auto;
     padding: 0;
     position: relative;

@@ -8,13 +8,17 @@ Front-end for the News Explorer website.
 
 ## Functionality
 
-* Partial form validation that is likely meant to be done for Stage-3 and not Stage-2
+* Form Validation
 
 * Open/Close popups and navigation menu
 
- * It mostly just looks pretty, it doesn't do much yet.
+* Searching Articles
+
+* Saving and Deleting Articles
 
 * Responsive CSS layout
+
+* Authentication and Registration
 
 ## Technologies & Techniques
 
@@ -42,6 +46,8 @@ Front-end for the News Explorer website.
 
 * JSX allows HTML and JavaScript to be integrated into a single file
 
+* Protected Routes to prevent unauthorized users from accessing
+
 ## Links
 
-* No links yet!
+* https://www.ktraynornews.students.nomoreparties.site/

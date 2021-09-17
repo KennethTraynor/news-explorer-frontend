@@ -1,0 +1,15 @@
+.search-error__main-text {
+    padding: 0;
+    margin: 0 40px 16px 40px;
+
+    max-width: 350px;
+
+    font-family: 'Roboto Slab', Verdana, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 30px;
+    text-align: center;
+
+    color: #1A1B22;
+}

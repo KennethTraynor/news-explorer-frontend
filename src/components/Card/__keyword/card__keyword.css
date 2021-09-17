@@ -2,7 +2,7 @@
     display: flex;
     
     margin: 0;
-    padding: 0 22px 0 22px;
+    padding: 0;
 
     align-items: center;
     justify-content: center;
@@ -13,18 +13,11 @@
     left: 24px;
 
     height: 40px;
+    max-width: 50%;
     
     background-color: white;
 
     border-radius: 8px;
-
-    font-family: 'Roboto', Verdana, sans-serif;    
-    color: black;
-    
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 24px;
 }
 
 @media screen and (max-width: 1024px) {

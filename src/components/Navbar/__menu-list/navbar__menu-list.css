@@ -1,0 +1,6 @@
+.navbar__menu-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0 16px 0 16px;
+}

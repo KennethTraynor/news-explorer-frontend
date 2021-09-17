@@ -1,12 +1,27 @@
 import './SavedNewsCards.css';
 import Card from '../Card/Card';
-import { TestCards } from '../../utils/constants';
 
-function SavedNewsCards() {
+function SavedNewsCards({ loggedIn, savedArticles, onRemoveArticle }) {
     return (
         <div className='saved-news-cards'>
             <ul className="saved-news-cards__layout">
-                {TestCards.map((card, index) => <Card key={index} showDelete={true} showKeyword={true} keyword={card.keyword} date={card.date} description={card.description} title={card.title} source={card.source} image={card.image} />)}
+                {(savedArticles || []).map((article, index) =>
+                    <Card
+                        key={index}
+                        loggedIn={loggedIn}
+                        article={article}
+                        showDelete={true}
+                        showKeyword={true}
+                        keyword={article.keyword}
+                        date={article.date}
+                        description={article.text}
+                        title={article.title}
+                        source={article.source}
+                        image={article.image}
+                        url={article.link}
+                        onRemoveArticle={onRemoveArticle}
+                    />)
+                }
             </ul>
         </div>
     )

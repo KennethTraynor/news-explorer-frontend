@@ -9,41 +9,103 @@ import Footer from '../Footer/Footer';
 import SignupPopup from '../SignupPopup/SignupPopup';
 import SigninPopup from '../SigninPopup/SigninPopup';
 import InfoPopup from '../InfoPopup/InfoPopup';
+import SearchError from '../SearchError/SearchError';
 
 function Main(
     {
+        loggedIn,
+        onRegister,
+        onLogin,
+        onSignOut,
+
         isSignupPopupOpen,
         onSignupPopupOpen,
-        handleSignup,
+
         isSigninPopupOpen,
         onSigninPopupOpen,
+
         isInfoPopupOpen,
+
         closeAllPopups,
         onPopupBackgroundClick,
+
         isNavMenuOpen,
-        onNavMenuOpen,
-        onNavMenuClose,
+        setNavMenuState,
         onNavMenuBackgroundClick,
+
+        onSearchNews,
+        onShowMore,
+        onBookmarkArticle,
+        onRemoveArticle,
+        newsResults,
+        isSearching,
+        maxDisplayedCards,
+        isNothingFoundVisible,
+        isSearchErrorVisible,
+        isSearchResultsVisible,
+
+        savedArticles,
     }) {
+
     return (
         <main className='main'>
             <div className='main__container'>
                 <Header
                     onSigninPopupOpen={onSigninPopupOpen}
-                    
+
                     isNavMenuOpen={isNavMenuOpen}
-                    onNavMenuOpen={onNavMenuOpen}
-                    onNavMenuClose={onNavMenuClose}
+                    setNavMenuState={setNavMenuState}
                     onNavMenuBackgroundClick={onNavMenuBackgroundClick}
+
+                    onSearchNews={onSearchNews}
+                    loggedIn={loggedIn}
+                    onSignOut={onSignOut}
                 />
-                <SearchResults />
-                <Preloader />
-                <NoResults />
+
+                {
+                    (!isSearching && isSearchResultsVisible) &&
+                    <SearchResults
+                        newsResults={newsResults}
+                        maxDisplayedCards={maxDisplayedCards}
+                        onShowMore={onShowMore}
+                        loggedIn={loggedIn}
+                        onBookmarkArticle={onBookmarkArticle}
+                        onSigninPopupOpen={onSigninPopupOpen}
+                        onRemoveArticle={onRemoveArticle}
+                        savedArticles={savedArticles}
+                    />
+                }
+                {isSearching && <Preloader />}
+                {isNothingFoundVisible && <NoResults />}
+                {isSearchErrorVisible && <SearchError />}
+
                 <About />
+
                 <Footer />
-                <SignupPopup onClose={closeAllPopups} isOpen={isSignupPopupOpen} onPopupBackgroundClick={onPopupBackgroundClick} onLinkClick={onSigninPopupOpen} handleSignup={handleSignup} />
-                <SigninPopup onClose={closeAllPopups} isOpen={isSigninPopupOpen} onPopupBackgroundClick={onPopupBackgroundClick} onLinkClick={onSignupPopupOpen} />
-                <InfoPopup onClose={closeAllPopups} isOpen={isInfoPopupOpen} onPopupBackgroundClick={onPopupBackgroundClick} onLinkClick={onSigninPopupOpen} message='Registration successfully completed!' linkText='Sign in' />
+
+
+                <SignupPopup
+                    onClose={closeAllPopups}
+                    isOpen={isSignupPopupOpen}
+                    onPopupBackgroundClick={onPopupBackgroundClick}
+                    onLinkClick={onSigninPopupOpen}
+                    onRegister={onRegister}
+                />
+                <SigninPopup
+                    onClose={closeAllPopups}
+                    isOpen={isSigninPopupOpen}
+                    onPopupBackgroundClick={onPopupBackgroundClick}
+                    onLinkClick={onSignupPopupOpen}
+                    onLogin={onLogin}
+                />
+                <InfoPopup
+                    onClose={closeAllPopups}
+                    isOpen={isInfoPopupOpen}
+                    onPopupBackgroundClick={onPopupBackgroundClick}
+                    onLinkClick={onSigninPopupOpen}
+                    message='Registration successfully completed!'
+                    linkText='Sign in'
+                />
             </div>
         </main>
     )
