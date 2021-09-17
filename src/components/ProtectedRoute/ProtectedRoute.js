@@ -5,7 +5,14 @@ const ProtectedRoute = ({ component: Component, ...props }) => {
     return (
         <Route>
             {
-                props.loggedIn ? <Component { ...props } /> : <Redirect to='/' />
+                () => {
+                    if (props.loggedIn) {
+                        return <Component {...props} />
+                    } else {
+                        props.onSigninPopupOpen();
+                        return <Redirect to='/' />
+                    }
+                }
             }
         </Route>
     )

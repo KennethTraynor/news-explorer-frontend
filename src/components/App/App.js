@@ -308,7 +308,10 @@ function App() {
                         />
                     </Route>
 
-                    <ProtectedRoute path='/saved-news'
+                    <ProtectedRoute
+                        path='/saved-news'
+                        onSigninPopupOpen={onSigninPopupOpen}
+                        
                         component={SavedNews}
                         
                         loggedIn={loggedIn}
